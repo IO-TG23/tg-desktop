@@ -45,17 +45,17 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	wxBoxSizer* bSizer15;
 	bSizer15 = new wxBoxSizer( wxVERTICAL );
 
-	m_button411 = new wxButton( this, wxID_ANY, wxT("Dodaj"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_button411->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	m_button411->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+	add_car_button = new wxButton( this, wxID_ANY, wxT("Dodaj"), wxDefaultPosition, wxDefaultSize, 0 );
+	add_car_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	add_car_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer15->Add( m_button411, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer15->Add( add_car_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	m_button4 = new wxButton( this, wxID_ANY, wxT("Import"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_button4->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	m_button4->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+	import_button = new wxButton( this, wxID_ANY, wxT("Import"), wxDefaultPosition, wxDefaultSize, 0 );
+	import_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	import_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer15->Add( m_button4, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer15->Add( import_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	bSizer13->Add( bSizer15, 1, wxEXPAND, 5 );
@@ -66,11 +66,11 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer151->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_button41 = new wxButton( this, wxID_ANY, wxT("Eksport"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_button41->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	m_button41->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+	export_button = new wxButton( this, wxID_ANY, wxT("Eksport"), wxDefaultPosition, wxDefaultSize, 0 );
+	export_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	export_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer151->Add( m_button41, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer151->Add( export_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	bSizer13->Add( bSizer151, 1, wxEXPAND, 5 );
@@ -83,10 +83,22 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	this->Layout();
 
 	this->Centre( wxBOTH );
+
+	// Connect Events
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( main_frame::main_frameOnClose ) );
+	add_car_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_car_buttonOnButtonClick ), NULL, this );
+	import_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
+	export_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
 }
 
 main_frame::~main_frame()
 {
+	// Disconnect Events
+	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( main_frame::main_frameOnClose ) );
+	add_car_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_car_buttonOnButtonClick ), NULL, this );
+	import_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
+	export_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
+
 }
 
 login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
@@ -113,12 +125,12 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer3->Add( m_staticText1, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_textCtrl1 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
-	m_textCtrl1->SetForegroundColour( wxColour( 77, 28, 16 ) );
-	m_textCtrl1->SetBackgroundColour( wxColour( 144, 144, 144 ) );
-	m_textCtrl1->SetMinSize( wxSize( 150,-1 ) );
+	login_field = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
+	login_field->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	login_field->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+	login_field->SetMinSize( wxSize( 150,-1 ) );
 
-	bSizer3->Add( m_textCtrl1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+	bSizer3->Add( login_field, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	bSizer2->Add( bSizer3, 1, wxALIGN_CENTER_HORIZONTAL, 5 );
@@ -132,12 +144,12 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer31->Add( m_staticText11, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_textCtrl11 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD|wxTE_PROCESS_ENTER );
-	m_textCtrl11->SetForegroundColour( wxColour( 77, 28, 16 ) );
-	m_textCtrl11->SetBackgroundColour( wxColour( 144, 144, 144 ) );
-	m_textCtrl11->SetMinSize( wxSize( 150,-1 ) );
+	passwd_field = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD|wxTE_PROCESS_ENTER );
+	passwd_field->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	passwd_field->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+	passwd_field->SetMinSize( wxSize( 150,-1 ) );
 
-	bSizer31->Add( m_textCtrl11, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+	bSizer31->Add( passwd_field, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	bSizer2->Add( bSizer31, 1, wxALIGN_CENTER_HORIZONTAL, 5 );
@@ -169,10 +181,10 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( login_dial::login_dialOnClose ) );
-	m_textCtrl1->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::m_textCtrl1OnTextEnter ), NULL, this );
-	m_textCtrl1->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::m_textCtrl1OnTextMaxLen ), NULL, this );
-	m_textCtrl11->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::m_textCtrl11OnTextEnter ), NULL, this );
-	m_textCtrl11->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::m_textCtrl11OnTextMaxLen ), NULL, this );
+	login_field->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::login_fieldOnTextEnter ), NULL, this );
+	login_field->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::login_fieldOnTextMaxLen ), NULL, this );
+	passwd_field->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::passwd_fieldOnTextEnter ), NULL, this );
+	passwd_field->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::passwd_fieldOnTextMaxLen ), NULL, this );
 	login_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::login_buttonOnButtonClick ), NULL, this );
 	regiter_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::regiter_buttonOnButtonClick ), NULL, this );
 }
@@ -181,10 +193,10 @@ login_dial::~login_dial()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( login_dial::login_dialOnClose ) );
-	m_textCtrl1->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::m_textCtrl1OnTextEnter ), NULL, this );
-	m_textCtrl1->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::m_textCtrl1OnTextMaxLen ), NULL, this );
-	m_textCtrl11->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::m_textCtrl11OnTextEnter ), NULL, this );
-	m_textCtrl11->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::m_textCtrl11OnTextMaxLen ), NULL, this );
+	login_field->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::login_fieldOnTextEnter ), NULL, this );
+	login_field->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::login_fieldOnTextMaxLen ), NULL, this );
+	passwd_field->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::passwd_fieldOnTextEnter ), NULL, this );
+	passwd_field->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::passwd_fieldOnTextMaxLen ), NULL, this );
 	login_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::login_buttonOnButtonClick ), NULL, this );
 	regiter_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::regiter_buttonOnButtonClick ), NULL, this );
 

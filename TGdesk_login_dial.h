@@ -16,16 +16,21 @@ class TGdesk_login_dial : public login_dial
 	protected:
 		// Handlers for login_dial events.
 		void login_dialOnClose( wxCloseEvent& event );
-		void m_textCtrl1OnTextEnter( wxCommandEvent& event );
-		void m_textCtrl1OnTextMaxLen( wxCommandEvent& event );
-		void m_textCtrl11OnTextEnter( wxCommandEvent& event );
-		void m_textCtrl11OnTextMaxLen( wxCommandEvent& event );
+		void login_fieldOnTextEnter( wxCommandEvent& event );
+		void login_fieldOnTextMaxLen( wxCommandEvent& event );
+		void passwd_fieldOnTextEnter( wxCommandEvent& event );
+		void passwd_fieldOnTextMaxLen( wxCommandEvent& event );
 		void login_buttonOnButtonClick( wxCommandEvent& event );
 		void regiter_buttonOnButtonClick( wxCommandEvent& event );
 	public:
 		/** Constructor */
 		TGdesk_login_dial( wxWindow* parent );
 	//// end generated class members
+
+
+
+
+
 
 
 

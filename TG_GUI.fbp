@@ -57,6 +57,7 @@
             <property name="window_name"></property>
             <property name="window_style">wxTAB_TRAVERSAL</property>
             <property name="xrc_skip_sizer">1</property>
+            <event name="OnClose">main_frameOnClose</event>
             <object class="wxBoxSizer" expanded="1">
                 <property name="minimum_size"></property>
                 <property name="name">bSizer5</property>
@@ -271,7 +272,7 @@
                                         <property name="minimize_button">0</property>
                                         <property name="minimum_size"></property>
                                         <property name="moveable">1</property>
-                                        <property name="name">m_button411</property>
+                                        <property name="name">add_car_button</property>
                                         <property name="pane_border">1</property>
                                         <property name="pane_position"></property>
                                         <property name="pane_size"></property>
@@ -294,6 +295,7 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
+                                        <event name="OnButtonClick">add_car_buttonOnButtonClick</event>
                                     </object>
                                 </object>
                                 <object class="sizeritem" expanded="1">
@@ -344,7 +346,7 @@
                                         <property name="minimize_button">0</property>
                                         <property name="minimum_size"></property>
                                         <property name="moveable">1</property>
-                                        <property name="name">m_button4</property>
+                                        <property name="name">import_button</property>
                                         <property name="pane_border">1</property>
                                         <property name="pane_position"></property>
                                         <property name="pane_size"></property>
@@ -367,6 +369,7 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
+                                        <event name="OnButtonClick">import_buttonOnButtonClick</event>
                                     </object>
                                 </object>
                             </object>
@@ -438,7 +441,7 @@
                                         <property name="minimize_button">0</property>
                                         <property name="minimum_size"></property>
                                         <property name="moveable">1</property>
-                                        <property name="name">m_button41</property>
+                                        <property name="name">export_button</property>
                                         <property name="pane_border">1</property>
                                         <property name="pane_position"></property>
                                         <property name="pane_size"></property>
@@ -461,6 +464,7 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
+                                        <event name="OnButtonClick">export_buttonOnButtonClick</event>
                                     </object>
                                 </object>
                             </object>
@@ -631,7 +635,7 @@
                                         <property name="minimize_button">0</property>
                                         <property name="minimum_size">150,-1</property>
                                         <property name="moveable">1</property>
-                                        <property name="name">m_textCtrl1</property>
+                                        <property name="name">login_field</property>
                                         <property name="pane_border">1</property>
                                         <property name="pane_position"></property>
                                         <property name="pane_size"></property>
@@ -653,8 +657,8 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
-                                        <event name="OnTextEnter">m_textCtrl1OnTextEnter</event>
-                                        <event name="OnTextMaxLen">m_textCtrl1OnTextMaxLen</event>
+                                        <event name="OnTextEnter">login_fieldOnTextEnter</event>
+                                        <event name="OnTextMaxLen">login_fieldOnTextMaxLen</event>
                                     </object>
                                 </object>
                             </object>
@@ -663,7 +667,7 @@
                             <property name="border">5</property>
                             <property name="flag">wxALIGN_CENTER_HORIZONTAL</property>
                             <property name="proportion">1</property>
-                            <object class="wxBoxSizer" expanded="0">
+                            <object class="wxBoxSizer" expanded="1">
                                 <property name="minimum_size"></property>
                                 <property name="name">bSizer31</property>
                                 <property name="orient">wxHORIZONTAL</property>
@@ -769,7 +773,7 @@
                                         <property name="minimize_button">0</property>
                                         <property name="minimum_size">150,-1</property>
                                         <property name="moveable">1</property>
-                                        <property name="name">m_textCtrl11</property>
+                                        <property name="name">passwd_field</property>
                                         <property name="pane_border">1</property>
                                         <property name="pane_position"></property>
                                         <property name="pane_size"></property>
@@ -791,8 +795,8 @@
                                         <property name="window_extra_style"></property>
                                         <property name="window_name"></property>
                                         <property name="window_style"></property>
-                                        <event name="OnTextEnter">m_textCtrl11OnTextEnter</event>
-                                        <event name="OnTextMaxLen">m_textCtrl11OnTextMaxLen</event>
+                                        <event name="OnTextEnter">passwd_fieldOnTextEnter</event>
+                                        <event name="OnTextMaxLen">passwd_fieldOnTextMaxLen</event>
                                     </object>
                                 </object>
                             </object>

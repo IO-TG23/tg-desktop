@@ -9,27 +9,28 @@ login_dial( parent )
 
 void TGdesk_login_dial::login_dialOnClose( wxCloseEvent& event )
 {
-    GetParent()->Close();
+GetParent()->Close();
+Destroy();
 }
 
-void TGdesk_login_dial::m_textCtrl1OnTextEnter( wxCommandEvent& event )
+void TGdesk_login_dial::login_fieldOnTextEnter( wxCommandEvent& event )
 {
-// TODO: Implement m_textCtrl1OnTextEnter
+// TODO: Implement login_fieldOnTextEnter
 }
 
-void TGdesk_login_dial::m_textCtrl1OnTextMaxLen( wxCommandEvent& event )
+void TGdesk_login_dial::login_fieldOnTextMaxLen( wxCommandEvent& event )
 {
-// TODO: Implement m_textCtrl1OnTextMaxLen
+// TODO: Implement login_fieldOnTextMaxLen
 }
 
-void TGdesk_login_dial::m_textCtrl11OnTextEnter( wxCommandEvent& event )
+void TGdesk_login_dial::passwd_fieldOnTextEnter( wxCommandEvent& event )
 {
-// TODO: Implement m_textCtrl11OnTextEnter
+// TODO: Implement passwd_fieldOnTextEnter
 }
 
-void TGdesk_login_dial::m_textCtrl11OnTextMaxLen( wxCommandEvent& event )
+void TGdesk_login_dial::passwd_fieldOnTextMaxLen( wxCommandEvent& event )
 {
-// TODO: Implement m_textCtrl11OnTextMaxLen
+// TODO: Implement passwd_fieldOnTextMaxLen
 }
 
 void TGdesk_login_dial::login_buttonOnButtonClick( wxCommandEvent& event )

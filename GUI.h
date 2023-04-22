@@ -37,9 +37,16 @@ class main_frame : public wxFrame
 	protected:
 		wxStaticText* m_staticText411;
 		wxStaticText* m_staticText4;
-		wxButton* m_button411;
-		wxButton* m_button4;
-		wxButton* m_button41;
+		wxButton* add_car_button;
+		wxButton* import_button;
+		wxButton* export_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void main_frameOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void add_car_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void import_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void export_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
 
 	public:
 
@@ -58,18 +65,18 @@ class login_dial : public wxDialog
 
 	protected:
 		wxStaticText* m_staticText1;
-		wxTextCtrl* m_textCtrl1;
+		wxTextCtrl* login_field;
 		wxStaticText* m_staticText11;
-		wxTextCtrl* m_textCtrl11;
+		wxTextCtrl* passwd_field;
 		wxButton* login_button;
 		wxButton* regiter_button;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void login_dialOnClose( wxCloseEvent& event ) { event.Skip(); }
-		virtual void m_textCtrl1OnTextEnter( wxCommandEvent& event ) { event.Skip(); }
-		virtual void m_textCtrl1OnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
-		virtual void m_textCtrl11OnTextEnter( wxCommandEvent& event ) { event.Skip(); }
-		virtual void m_textCtrl11OnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void login_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void login_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void passwd_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void passwd_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void login_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void regiter_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
