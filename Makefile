@@ -1,4 +1,4 @@
-OBJS	= main.o GUI.o TGdesk_login_dial.o TGdesk_main_frame.o
+OBJS	= main.o GUI.o TGdesk_login_dial.o TGdesk_main_frame.o TGdesk_register_dial.o
 SOURCE	= *.cpp
 OUT	= a.out
 CC	 = g++
@@ -14,8 +14,11 @@ main.o: main.cpp
 GUI.o: GUI.cpp
 	$(CC) $(FLAGS) GUI.cpp 
 
-TGdesk_login_dial.o: TGdesk_login_dial.cpp
-	$(CC) $(FLAGS) TGdesk_login_dial.cpp 
+TGdesk_login_dial.o: TGdesk_login_dial.cpp 
+	$(CC) $(FLAGS) TGdesk_login_dial.cpp
+
+TGdesk_register_dial.o: TGdesk_register_dial.cpp
+	$(CC) $(FLAGS) TGdesk_register_dial.cpp 
 
 TGdesk_main_frame.o: TGdesk_main_frame.cpp
 	$(CC) $(FLAGS) TGdesk_main_frame.cpp 

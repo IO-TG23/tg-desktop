@@ -12,6 +12,13 @@ void TGdesk_main_frame::main_frameOnClose( wxCloseEvent& event )
 Destroy();
 }
 
+void TGdesk_main_frame::logoutOnButtonClick( wxCommandEvent& event )
+{
+wxDialog *logging = new TGdesk_login_dial(this);
+logging->Show(true);
+Disable();
+}
+
 void TGdesk_main_frame::add_car_buttonOnButtonClick( wxCommandEvent& event )
 {
 // TODO: Implement add_car_buttonOnButtonClick
