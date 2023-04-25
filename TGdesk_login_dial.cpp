@@ -40,19 +40,11 @@ void TGdesk_login_dial::login_buttonOnButtonClick( wxCommandEvent& event )
 {
 std::string login = login_field->GetValue().ToStdString();
 
-if(login.size()){
-auto p = login.find('@');
-if(p != std::string::npos){
-if(login.find('.', p) != std::string::npos){
-p = login.find('@', p+1);
-if(p == std::string::npos){
+if(mail_check(login)){
 
-loggedin=true;
-Close();
-return;
-}
-}
-}
+    loggedin=true;
+    Close();
+    return;
 }
 
 loggedin=false;
@@ -66,3 +58,4 @@ wxDialog *signup = new TGdesk_register_dial(this);
 signup->Show(true);
 Disable();
 }
+

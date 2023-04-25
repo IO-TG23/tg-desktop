@@ -65,5 +65,10 @@ void TGdesk_register_dial::passwd2_fieldOnTextMaxLen( wxCommandEvent& event )
 
 void TGdesk_register_dial::register_buttonOnButtonClick( wxCommandEvent& event )
 {
-Close();
+    if(TGdesk_login_dial::mail_check(login_field->GetValue().ToStdString())){
+        Close();
+        return;
+    }
+wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
 }

@@ -37,6 +37,21 @@ class TGdesk_login_dial : public login_dial
 	public:
 	bool is_logged() const {return loggedin;}
 
+	static bool mail_check(std::string email){
+		if(email.size()){
+			auto p = email.find('@');
+			if(p != std::string::npos){
+				if(email.find('.', p) != std::string::npos){
+					p = email.find('@', p+1);
+					if(p == std::string::npos){
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
 
 
 
