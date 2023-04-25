@@ -39,12 +39,28 @@ class TGdesk_login_dial : public login_dial
 
 	static bool mail_check(std::string email){
 		if(email.size()){
-			auto p = email.find('@');
-			if(p != std::string::npos){
-				if(email.find('.', p) != std::string::npos){
-					p = email.find('@', p+1);
-					if(p == std::string::npos){
-						return true;
+			auto at = email.find('@');
+			if(at > 0){
+				if(email.find('@', at+1) == std::string::npos){
+					if(email[0] == '.') return false;
+					
+					std::string::size_type p=0;
+					while(p < email.size()-1){
+						p = email.find('.', p+1);
+
+						if(p == std::string::npos) break;
+
+						for(int i=-1; i<=1; i+=2){
+							if((email[p+i]<'a' || email[p+i]>'z')
+							&& (email[p+i]<'Z' || email[p+i]>'Z') 
+							&& (email[p+i]<'0' || email[p+i]>'9') )
+							{return false;}
+						}
+					}
+
+					p = email.rfind('.', email.size()-1);
+					if(p != std::string::npos){
+						return p > at;
 					}
 				}
 			}

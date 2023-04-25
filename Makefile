@@ -14,7 +14,7 @@ main.o: main.cpp
 GUI.o: GUI.cpp
 	$(CC) $(FLAGS) GUI.cpp 
 
-TGdesk_login_dial.o: TGdesk_login_dial.cpp 
+TGdesk_login_dial.o: TGdesk_login_dial.cpp TGdesk_login_dial.h
 	$(CC) $(FLAGS) TGdesk_login_dial.cpp
 
 TGdesk_register_dial.o: TGdesk_register_dial.cpp
