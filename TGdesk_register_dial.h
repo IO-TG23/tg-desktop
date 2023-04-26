@@ -39,6 +39,9 @@ class TGdesk_register_dial : public register_dial
 	// 	bool check_passwds(std::string psw1, std::string psw2);
 
 
+
+
+
 };
 
 #endif // __TGdesk_register_dial__

@@ -65,34 +65,29 @@ void TGdesk_register_dial::passwd2_fieldOnTextMaxLen( wxCommandEvent& event )
 
 void TGdesk_register_dial::register_buttonOnButtonClick( wxCommandEvent& event )
 {
-    if(!TGdesk_login_dial::mail_check(login_field->GetValue().ToStdString())){
-        wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-        dlg.ShowModal();
-        return;
-    }
-
-    std::string psw1 = passwd_field1->GetValue().ToStdString();
-    std::string psw2 = passwd2_field->GetValue().ToStdString();
-
-    if(psw1.size()==0 || psw2.size()==0){
-        wxMessageDialog dlg(this, wxT("Musisz podać hasło."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-        dlg.ShowModal();
-        return;
-    }
-
-    if(psw1 != psw2){
-        wxMessageDialog dlg(this, wxT("Hasła nie są takie same."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-        dlg.ShowModal();
-        return;
-    }
-
-    wxMessageDialog dlg(this, wxT("Przesłano zgłoszenie."), wxMessageBoxCaptionStr, wxOK);
-    dlg.ShowModal();
-
-    Close();
+if(!TGdesk_login_dial::mail_check(login_field->GetValue().ToStdString())){
+wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+return;
 }
 
+std::string psw1 = passwd_field1->GetValue().ToStdString();
+std::string psw2 = passwd2_field->GetValue().ToStdString();
 
-// bool TGdesk_register_dial::check_passwds(std::string psw1, std::string psw2){
-//     if(psw1.size() == 0) return false;
-// }
+if(psw1.size()==0 || psw2.size()==0){
+wxMessageDialog dlg(this, wxT("Musisz podać hasło."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+return;
+}
+
+if(psw1 != psw2){
+wxMessageDialog dlg(this, wxT("Hasła nie są takie same."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+return;
+}
+
+wxMessageDialog dlg(this, wxT("Przesłano zgłoszenie."), wxMessageBoxCaptionStr, wxOK);
+dlg.ShowModal();
+
+Close();
+}

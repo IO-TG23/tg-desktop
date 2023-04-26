@@ -18,7 +18,7 @@ Destroy();
 
 void TGdesk_login_dial::login_fieldOnTextEnter( wxCommandEvent& event )
 {
-
+// TODO: Implement login_fieldOnTextEnter
 }
 
 void TGdesk_login_dial::login_fieldOnTextMaxLen( wxCommandEvent& event )
@@ -42,15 +42,15 @@ std::string login = login_field->GetValue().ToStdString();
 std::string psw = passwd_field->GetValue().ToStdString();
 
 if(!mail_check(login)){
-    loggedin=false;
-    wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-    dlg.ShowModal();
+loggedin=false;
+wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
 }else if(psw.size()==0){
-    wxMessageDialog dlg(this, wxT("Musisz podać hasło."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-    dlg.ShowModal();
+wxMessageDialog dlg(this, wxT("Musisz podać hasło."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
 } else {
-    loggedin=true;
-    Close();
+loggedin=true;
+Close();
 }
 
 }
@@ -61,4 +61,7 @@ wxDialog *signup = new TGdesk_register_dial(this);
 signup->Show(true);
 Disable();
 }
+
+
+
 

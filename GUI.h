@@ -23,6 +23,7 @@
 #include <wx/frame.h>
 #include <wx/textctrl.h>
 #include <wx/dialog.h>
+#include <wx/choice.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -52,7 +53,7 @@ class main_frame : public wxFrame
 
 	public:
 
-		main_frame( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		main_frame( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Tanie graty"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 500,300 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~main_frame();
 
@@ -127,6 +128,55 @@ class register_dial : public wxDialog
 		register_dial( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Rejestracja"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
 
 		~register_dial();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class add_car_form
+///////////////////////////////////////////////////////////////////////////////
+class add_car_form : public wxFrame
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1012;
+		wxChoice* drive_type;
+		wxChoice* gear_box;
+		wxStaticText* m_staticText1011;
+		wxTextCtrl* years;
+		wxStaticText* m_staticText101;
+		wxTextCtrl* doors_num;
+		wxStaticText* m_staticText1014;
+		wxTextCtrl* seat_num;
+		wxStaticText* m_staticText10111;
+		wxTextCtrl* cargo;
+		wxStaticText* m_staticText1015;
+		wxTextCtrl* length;
+		wxTextCtrl* width;
+		wxTextCtrl* height;
+		wxStaticText* m_staticText101111;
+		wxTextCtrl* axes;
+		wxStaticText* m_staticText1016;
+		wxTextCtrl* fweels;
+		wxStaticText* m_staticText10141;
+		wxTextCtrl* rweels;
+		wxStaticText* m_staticText1011111;
+		wxTextCtrl* descr;
+		wxButton* back;
+		wxButton* enter;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void add_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void descrOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void enterOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		add_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj pojazd"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,500 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+
+		~add_car_form();
 
 };
 
