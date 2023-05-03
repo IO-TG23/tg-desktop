@@ -9,13 +9,20 @@ add_car_form( parent )
 
 void TGdesk_add_car_form::add_car_formOnClose( wxCloseEvent& event )
 {
-Destroy();
 GetParent()->Enable();
+Destroy();
 }
 
-void TGdesk_add_car_form::descrOnText( wxCommandEvent& event )
+void TGdesk_add_car_form::descrOnChar( wxKeyEvent& event )
 {
-// TODO: Implement descrOnText
+if(event.GetKeyCode() == '\b') event.Skip();
+else if(descr->GetValue().size() >= 100) return;
+else event.Skip();
+}
+
+void TGdesk_add_car_form::descrOnCharHook( wxKeyEvent& event )
+{
+event.Skip();
 }
 
 void TGdesk_add_car_form::backOnButtonClick( wxCommandEvent& event )
@@ -35,17 +42,17 @@ empty |= height->GetLineLength(0) == 0;
 empty |= axes->GetLineLength(0) == 0;
 empty |= fweels->GetLineLength(0) == 0;
 empty |= rweels->GetLineLength(0) == 0;
-empty |= descr->GetLineLength(0) == 0;
+empty |= descr->GetValue().size() == 0;
 
 if(empty){
-    wxMessageDialog dlg(this, wxT("Wypełnij puste pola."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-    dlg.ShowModal();
+wxMessageDialog dlg(this, wxT("Wypełnij puste pola."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
 } else {
-    wxMessageDialog dlg(this, wxT("Pomyślnie wprowadzono pojazd."), wxMessageBoxCaptionStr, wxOK);
-    dlg.ShowModal();
+wxMessageDialog dlg(this, wxT("Pomyślnie wprowadzono pojazd."), wxMessageBoxCaptionStr, wxOK);
+dlg.ShowModal();
 
 
-    Close();
+Close();
 }
 
 }

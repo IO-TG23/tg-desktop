@@ -17,13 +17,24 @@ class TGdesk_add_car_form : public add_car_form
 	protected:
 		// Handlers for add_car_form events.
 		void add_car_formOnClose( wxCloseEvent& event );
-		void descrOnText( wxCommandEvent& event );
+		void descrOnChar( wxKeyEvent& event );
+		void descrOnCharHook( wxKeyEvent& event );
 		void backOnButtonClick( wxCommandEvent& event );
 		void enterOnButtonClick( wxCommandEvent& event );
 	public:
 		/** Constructor */
 		TGdesk_add_car_form( wxWindow* parent );
 	//// end generated class members
+
+
+
+
+
+
+
+
+
+
 
 
 

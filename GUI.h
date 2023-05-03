@@ -150,16 +150,22 @@ class add_car_form : public wxFrame
 		wxTextCtrl* seat_num;
 		wxStaticText* m_staticText10111;
 		wxTextCtrl* cargo;
+		wxStaticText* m_staticText101112;
 		wxStaticText* m_staticText1015;
 		wxTextCtrl* length;
+		wxStaticText* m_staticText1011121;
 		wxTextCtrl* width;
+		wxStaticText* m_staticText1011122;
 		wxTextCtrl* height;
 		wxStaticText* m_staticText101111;
 		wxTextCtrl* axes;
+		wxStaticText* m_staticText1011123;
 		wxStaticText* m_staticText1016;
 		wxTextCtrl* fweels;
+		wxStaticText* m_staticText10111231;
 		wxStaticText* m_staticText10141;
 		wxTextCtrl* rweels;
+		wxStaticText* m_staticText10111232;
 		wxStaticText* m_staticText1011111;
 		wxTextCtrl* descr;
 		wxButton* back;
@@ -167,7 +173,8 @@ class add_car_form : public wxFrame
 
 		// Virtual event handlers, override them in your derived class
 		virtual void add_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
-		virtual void descrOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void descrOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void descrOnCharHook( wxKeyEvent& event ) { event.Skip(); }
 		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void enterOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 

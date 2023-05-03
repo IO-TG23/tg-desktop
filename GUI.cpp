@@ -357,7 +357,7 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	drive_type = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, drive_typeNChoices, drive_typeChoices, 0 );
 	drive_type->SetSelection( 0 );
 	drive_type->SetForegroundColour( wxColour( 77, 28, 16 ) );
-	drive_type->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+	drive_type->SetBackgroundColour( wxColour( 255, 255, 255 ) );
 
 	bSizer17->Add( drive_type, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
@@ -366,7 +366,7 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	gear_box = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, gear_boxNChoices, gear_boxChoices, 0 );
 	gear_box->SetSelection( 0 );
 	gear_box->SetForegroundColour( wxColour( 77, 28, 16 ) );
-	gear_box->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+	gear_box->SetBackgroundColour( wxColour( 255, 255, 255 ) );
 
 	bSizer17->Add( gear_box, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
@@ -383,6 +383,14 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer18->Add( m_staticText1011, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	years = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !years->HasFlag( wxTE_MULTILINE ) )
+	{
+	years->SetMaxLength( 9 );
+	}
+	#else
+	years->SetMaxLength( 9 );
+	#endif
 	years->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	years->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
@@ -401,6 +409,14 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer181->Add( m_staticText101, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	doors_num = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !doors_num->HasFlag( wxTE_MULTILINE ) )
+	{
+	doors_num->SetMaxLength( 1 );
+	}
+	#else
+	doors_num->SetMaxLength( 1 );
+	#endif
 	doors_num->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	doors_num->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
@@ -413,6 +429,14 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer181->Add( m_staticText1014, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	seat_num = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !seat_num->HasFlag( wxTE_MULTILINE ) )
+	{
+	seat_num->SetMaxLength( 1 );
+	}
+	#else
+	seat_num->SetMaxLength( 1 );
+	#endif
 	seat_num->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	seat_num->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
@@ -431,10 +455,24 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer182->Add( m_staticText10111, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	cargo = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !cargo->HasFlag( wxTE_MULTILINE ) )
+	{
+	cargo->SetMaxLength( 4 );
+	}
+	#else
+	cargo->SetMaxLength( 4 );
+	#endif
 	cargo->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	cargo->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
 	bSizer182->Add( cargo, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	m_staticText101112 = new wxStaticText( this, wxID_ANY, wxT("l"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText101112->Wrap( -1 );
+	m_staticText101112->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer182->Add( m_staticText101112, 0, wxALIGN_CENTER_VERTICAL, 5 );
 
 
 	bSizer15->Add( bSizer182, 1, wxEXPAND, 5 );
@@ -442,25 +480,61 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxBoxSizer* bSizer1811;
 	bSizer1811 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText1015 = new wxStaticText( this, wxID_ANY, wxT("Dł. x Szer. x Wys.:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1015 = new wxStaticText( this, wxID_ANY, wxT("Dł. x Szer. x Wys. [mm]:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText1015->Wrap( -1 );
 	m_staticText1015->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
 	bSizer1811->Add( m_staticText1015, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	length = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !length->HasFlag( wxTE_MULTILINE ) )
+	{
+	length->SetMaxLength( 4 );
+	}
+	#else
+	length->SetMaxLength( 4 );
+	#endif
 	length->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	length->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
 	bSizer1811->Add( length, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
+	m_staticText1011121 = new wxStaticText( this, wxID_ANY, wxT("x"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1011121->Wrap( -1 );
+	m_staticText1011121->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1811->Add( m_staticText1011121, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
 	width = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !width->HasFlag( wxTE_MULTILINE ) )
+	{
+	width->SetMaxLength( 4 );
+	}
+	#else
+	width->SetMaxLength( 4 );
+	#endif
 	width->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	width->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
 	bSizer1811->Add( width, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
+	m_staticText1011122 = new wxStaticText( this, wxID_ANY, wxT("x"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1011122->Wrap( -1 );
+	m_staticText1011122->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1811->Add( m_staticText1011122, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
 	height = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !height->HasFlag( wxTE_MULTILINE ) )
+	{
+	height->SetMaxLength( 4 );
+	}
+	#else
+	height->SetMaxLength( 4 );
+	#endif
 	height->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	height->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
@@ -479,10 +553,24 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer1821->Add( m_staticText101111, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	axes = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !axes->HasFlag( wxTE_MULTILINE ) )
+	{
+	axes->SetMaxLength( 4 );
+	}
+	#else
+	axes->SetMaxLength( 4 );
+	#endif
 	axes->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	axes->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
 	bSizer1821->Add( axes, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	m_staticText1011123 = new wxStaticText( this, wxID_ANY, wxT("mm"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1011123->Wrap( -1 );
+	m_staticText1011123->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1821->Add( m_staticText1011123, 0, wxALIGN_CENTER_VERTICAL|wxTOP|wxBOTTOM|wxRIGHT, 5 );
 
 
 	bSizer15->Add( bSizer1821, 1, wxEXPAND, 5 );
@@ -497,22 +585,53 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer1812->Add( m_staticText1016, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	fweels = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !fweels->HasFlag( wxTE_MULTILINE ) )
+	{
+	fweels->SetMaxLength( 4 );
+	}
+	#else
+	fweels->SetMaxLength( 4 );
+	#endif
 	fweels->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	fweels->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
 	bSizer1812->Add( fweels, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
+	m_staticText10111231 = new wxStaticText( this, wxID_ANY, wxT("mm"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10111231->Wrap( -1 );
+	m_staticText10111231->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1812->Add( m_staticText10111231, 0, wxALIGN_CENTER_VERTICAL, 5 );
+
+
+	bSizer1812->Add( 10, 0, 0, 0, 5 );
+
 	m_staticText10141 = new wxStaticText( this, wxID_ANY, wxT("Rozstaw kół tył:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText10141->Wrap( -1 );
 	m_staticText10141->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
-	bSizer1812->Add( m_staticText10141, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer1812->Add( m_staticText10141, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 	rweels = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !rweels->HasFlag( wxTE_MULTILINE ) )
+	{
+	rweels->SetMaxLength( 4 );
+	}
+	#else
+	rweels->SetMaxLength( 4 );
+	#endif
 	rweels->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	rweels->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
 	bSizer1812->Add( rweels, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	m_staticText10111232 = new wxStaticText( this, wxID_ANY, wxT("mm"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10111232->Wrap( -1 );
+	m_staticText10111232->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1812->Add( m_staticText10111232, 0, wxALIGN_CENTER_VERTICAL, 5 );
 
 
 	bSizer15->Add( bSizer1812, 1, wxEXPAND, 5 );
@@ -526,11 +645,11 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	bSizer18211->Add( m_staticText1011111, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	descr = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE );
+	descr = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_NO_VSCROLL );
 	descr->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	descr->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 
-	bSizer18211->Add( descr, 1, wxALL|wxALIGN_CENTER_VERTICAL|wxEXPAND, 5 );
+	bSizer18211->Add( descr, 1, wxALL|wxEXPAND, 5 );
 
 
 	bSizer15->Add( bSizer18211, 1, wxEXPAND, 5 );
@@ -561,7 +680,8 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
-	descr->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( add_car_form::descrOnText ), NULL, this );
+	descr->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::descrOnChar ), NULL, this );
+	descr->Connect( wxEVT_CHAR_HOOK, wxKeyEventHandler( add_car_form::descrOnCharHook ), NULL, this );
 	back->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::backOnButtonClick ), NULL, this );
 	enter->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::enterOnButtonClick ), NULL, this );
 }
@@ -570,7 +690,8 @@ add_car_form::~add_car_form()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
-	descr->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( add_car_form::descrOnText ), NULL, this );
+	descr->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::descrOnChar ), NULL, this );
+	descr->Disconnect( wxEVT_CHAR_HOOK, wxKeyEventHandler( add_car_form::descrOnCharHook ), NULL, this );
 	back->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::backOnButtonClick ), NULL, this );
 	enter->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::enterOnButtonClick ), NULL, this );
 
