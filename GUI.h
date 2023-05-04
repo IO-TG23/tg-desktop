@@ -173,8 +173,17 @@ class add_car_form : public wxFrame
 
 		// Virtual event handlers, override them in your derived class
 		virtual void add_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void yearsOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void doors_numOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void seat_numOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void cargoOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void lengthOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void widthOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void heightOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void axesOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void fweelsOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void rweelsOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void descrOnChar( wxKeyEvent& event ) { event.Skip(); }
-		virtual void descrOnCharHook( wxKeyEvent& event ) { event.Skip(); }
 		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void enterOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 

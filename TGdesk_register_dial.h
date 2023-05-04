@@ -49,6 +49,11 @@ class TGdesk_register_dial : public register_dial
 
 
 
+
+
+
+
+
 };
 
 #endif // __TGdesk_register_dial__

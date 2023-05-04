@@ -11,7 +11,7 @@
 
 main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 500,300 ), wxDefaultSize );
 	this->SetBackgroundColour( wxColour( 128, 48, 28 ) );
 	this->Enable( false );
 
@@ -283,7 +283,7 @@ register_dial::register_dial( wxWindow* parent, wxWindowID id, const wxString& t
 	bSizer2->Add( bSizer211, 1, wxEXPAND, 5 );
 
 
-	bSizer1->Add( bSizer2, 1, wxALL, 5 );
+	bSizer1->Add( bSizer2, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	bSizer1->Add( 0, 15, 0, 0, 5 );
@@ -336,7 +336,7 @@ register_dial::~register_dial()
 
 add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 600,500 ), wxDefaultSize );
 	this->SetForegroundColour( wxColour( 144, 144, 144 ) );
 	this->SetBackgroundColour( wxColour( 128, 48, 28 ) );
 
@@ -361,7 +361,7 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	bSizer17->Add( drive_type, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	wxString gear_boxChoices[] = { wxT("manualna"), wxT("automatyczna"), wxT("półautomatyczna"), wxT("dwusprzęgłowa"), wxEmptyString };
+	wxString gear_boxChoices[] = { wxT("manualna"), wxT("automatyczna"), wxT("półautomatyczna"), wxT("dwusprzęgłowa") };
 	int gear_boxNChoices = sizeof( gear_boxChoices ) / sizeof( wxString );
 	gear_box = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, gear_boxNChoices, gear_boxChoices, 0 );
 	gear_box->SetSelection( 0 );
@@ -382,7 +382,7 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	bSizer18->Add( m_staticText1011, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	years = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	years = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 120,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !years->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -680,8 +680,17 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
+	years->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
+	doors_num->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::doors_numOnChar ), NULL, this );
+	seat_num->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::seat_numOnChar ), NULL, this );
+	cargo->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::cargoOnChar ), NULL, this );
+	length->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::lengthOnChar ), NULL, this );
+	width->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::widthOnChar ), NULL, this );
+	height->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::heightOnChar ), NULL, this );
+	axes->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::axesOnChar ), NULL, this );
+	fweels->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::fweelsOnChar ), NULL, this );
+	rweels->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::rweelsOnChar ), NULL, this );
 	descr->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::descrOnChar ), NULL, this );
-	descr->Connect( wxEVT_CHAR_HOOK, wxKeyEventHandler( add_car_form::descrOnCharHook ), NULL, this );
 	back->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::backOnButtonClick ), NULL, this );
 	enter->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::enterOnButtonClick ), NULL, this );
 }
@@ -690,8 +699,17 @@ add_car_form::~add_car_form()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
+	years->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
+	doors_num->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::doors_numOnChar ), NULL, this );
+	seat_num->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::seat_numOnChar ), NULL, this );
+	cargo->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::cargoOnChar ), NULL, this );
+	length->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::lengthOnChar ), NULL, this );
+	width->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::widthOnChar ), NULL, this );
+	height->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::heightOnChar ), NULL, this );
+	axes->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::axesOnChar ), NULL, this );
+	fweels->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::fweelsOnChar ), NULL, this );
+	rweels->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::rweelsOnChar ), NULL, this );
 	descr->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::descrOnChar ), NULL, this );
-	descr->Disconnect( wxEVT_CHAR_HOOK, wxKeyEventHandler( add_car_form::descrOnCharHook ), NULL, this );
 	back->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::backOnButtonClick ), NULL, this );
 	enter->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::enterOnButtonClick ), NULL, this );
 

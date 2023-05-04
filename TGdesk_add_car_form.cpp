@@ -13,16 +13,81 @@ GetParent()->Enable();
 Destroy();
 }
 
+void TGdesk_add_car_form::yearsOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='-' || c=='\b') event.Skip(); // years format witch dash and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::doors_numOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::seat_numOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::cargoOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::lengthOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::widthOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::heightOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::axesOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::fweelsOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
+void TGdesk_add_car_form::rweelsOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+else return;
+}
+
 void TGdesk_add_car_form::descrOnChar( wxKeyEvent& event )
 {
 if(event.GetKeyCode() == '\b') event.Skip();
 else if(descr->GetValue().size() >= 100) return;
 else event.Skip();
-}
-
-void TGdesk_add_car_form::descrOnCharHook( wxKeyEvent& event )
-{
-event.Skip();
 }
 
 void TGdesk_add_car_form::backOnButtonClick( wxCommandEvent& event )
