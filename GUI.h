@@ -144,6 +144,9 @@ class add_car_form : public wxFrame
 		wxChoice* gear_box;
 		wxStaticText* m_staticText1011;
 		wxTextCtrl* years;
+		wxStaticText* m_staticText10112;
+		wxTextCtrl* radius;
+		wxStaticText* m_staticText10111233;
 		wxStaticText* m_staticText101;
 		wxTextCtrl* doors_num;
 		wxStaticText* m_staticText1014;
@@ -174,6 +177,7 @@ class add_car_form : public wxFrame
 		// Virtual event handlers, override them in your derived class
 		virtual void add_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
 		virtual void yearsOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void radiusOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void doors_numOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void seat_numOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void cargoOnChar( wxKeyEvent& event ) { event.Skip(); }

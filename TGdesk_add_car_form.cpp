@@ -20,6 +20,13 @@ if(is_num(c) || c=='-' || c=='\b') event.Skip(); // years format witch dash and 
 else return;
 }
 
+void TGdesk_add_car_form::radiusOnChar( wxKeyEvent& event )
+{
+auto c = event.GetKeyCode();
+if(is_num(c) || c=='\b' || c=='.' || c==',') event.Skip(); // numbers, decimal point and BACKSPACE
+else return;
+}
+
 void TGdesk_add_car_form::doors_numOnChar( wxKeyEvent& event )
 {
 auto c = event.GetKeyCode();
@@ -37,7 +44,7 @@ else return;
 void TGdesk_add_car_form::cargoOnChar( wxKeyEvent& event )
 {
 auto c = event.GetKeyCode();
-if(is_num(c) || c=='\b') event.Skip(); // numbers and BACKSPACE
+if(is_num(c) || c=='-' || c=='\b') event.Skip(); // years format witch dash and BACKSPACE
 else return;
 }
 
@@ -86,7 +93,7 @@ else return;
 void TGdesk_add_car_form::descrOnChar( wxKeyEvent& event )
 {
 if(event.GetKeyCode() == '\b') event.Skip();
-else if(descr->GetValue().size() >= 100) return;
+else if(descr->GetValue().size() >= 150) return;
 else event.Skip();
 }
 

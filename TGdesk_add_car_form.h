@@ -18,6 +18,7 @@ class TGdesk_add_car_form : public add_car_form
 		// Handlers for add_car_form events.
 		void add_car_formOnClose( wxCloseEvent& event );
 		void yearsOnChar( wxKeyEvent& event );
+		void radiusOnChar( wxKeyEvent& event );
 		void doors_numOnChar( wxKeyEvent& event );
 		void seat_numOnChar( wxKeyEvent& event );
 		void cargoOnChar( wxKeyEvent& event );
@@ -37,6 +38,8 @@ class TGdesk_add_car_form : public add_car_form
 
 	protected:
 	static bool is_num(const char c) {return c>='0' && c <='9';}
+
+
 
 
 

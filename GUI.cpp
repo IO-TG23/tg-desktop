@@ -399,6 +399,38 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	bSizer15->Add( bSizer18, 1, wxEXPAND, 5 );
 
+	wxBoxSizer* bSizer183;
+	bSizer183 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText10112 = new wxStaticText( this, wxID_ANY, wxT("Promień zawracania:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10112->Wrap( -1 );
+	m_staticText10112->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer183->Add( m_staticText10112, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	radius = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !radius->HasFlag( wxTE_MULTILINE ) )
+	{
+	radius->SetMaxLength( 3 );
+	}
+	#else
+	radius->SetMaxLength( 3 );
+	#endif
+	radius->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	radius->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+
+	bSizer183->Add( radius, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	m_staticText10111233 = new wxStaticText( this, wxID_ANY, wxT("m"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10111233->Wrap( -1 );
+	m_staticText10111233->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer183->Add( m_staticText10111233, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+
+	bSizer15->Add( bSizer183, 1, wxEXPAND, 5 );
+
 	wxBoxSizer* bSizer181;
 	bSizer181 = new wxBoxSizer( wxHORIZONTAL );
 
@@ -458,10 +490,10 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	#ifdef __WXGTK__
 	if ( !cargo->HasFlag( wxTE_MULTILINE ) )
 	{
-	cargo->SetMaxLength( 4 );
+	cargo->SetMaxLength( 7 );
 	}
 	#else
-	cargo->SetMaxLength( 4 );
+	cargo->SetMaxLength( 7 );
 	#endif
 	cargo->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	cargo->SetBackgroundColour( wxColour( 144, 144, 144 ) );
@@ -681,6 +713,7 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
 	years->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
+	radius->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::radiusOnChar ), NULL, this );
 	doors_num->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::doors_numOnChar ), NULL, this );
 	seat_num->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::seat_numOnChar ), NULL, this );
 	cargo->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::cargoOnChar ), NULL, this );
@@ -700,6 +733,7 @@ add_car_form::~add_car_form()
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
 	years->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
+	radius->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::radiusOnChar ), NULL, this );
 	doors_num->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::doors_numOnChar ), NULL, this );
 	seat_num->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::seat_numOnChar ), NULL, this );
 	cargo->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::cargoOnChar ), NULL, this );
