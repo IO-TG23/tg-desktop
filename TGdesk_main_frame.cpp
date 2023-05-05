@@ -21,7 +21,9 @@ Disable();
 
 void TGdesk_main_frame::add_car_buttonOnButtonClick( wxCommandEvent& event )
 {
-// TODO: Implement add_car_buttonOnButtonClick
+wxFrame *form = new TGdesk_add_car_form(this);
+form->Show(true);
+Disable();
 }
 
 void TGdesk_main_frame::import_buttonOnButtonClick( wxCommandEvent& event )
