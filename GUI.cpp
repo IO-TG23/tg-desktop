@@ -39,17 +39,29 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	wxBoxSizer* bSizer14;
 	bSizer14 = new wxBoxSizer( wxVERTICAL );
 
-	m_staticText411 = new wxStaticText( this, wxID_ANY, wxT("Nowy pojazd"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText411 = new wxStaticText( this, wxID_ANY, wxT("Pojazd"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText411->Wrap( -1 );
 	m_staticText411->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
 	bSizer14->Add( m_staticText411, 1, wxALL|wxEXPAND, 5 );
 
-	m_staticText4 = new wxStaticText( this, wxID_ANY, wxT("Dane z pliku"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText4 = new wxStaticText( this, wxID_ANY, wxT("Pojazd z pliku"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText4->Wrap( -1 );
 	m_staticText4->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
 	bSizer14->Add( m_staticText4, 1, wxALL|wxEXPAND, 5 );
+
+	m_staticText4111 = new wxStaticText( this, wxID_ANY, wxT("Sprzedawca"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText4111->Wrap( -1 );
+	m_staticText4111->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer14->Add( m_staticText4111, 1, wxALL|wxEXPAND, 5 );
+
+	m_staticText41 = new wxStaticText( this, wxID_ANY, wxT("Sprzed. z pliku"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText41->Wrap( -1 );
+	m_staticText41->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer14->Add( m_staticText41, 1, wxALL|wxEXPAND, 5 );
 
 
 	bSizer13->Add( bSizer14, 1, wxEXPAND|wxLEFT, 5 );
@@ -69,6 +81,18 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer15->Add( import_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
+	add_seller_button = new wxButton( this, wxID_ANY, wxT("Dodaj"), wxDefaultPosition, wxDefaultSize, 0 );
+	add_seller_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	add_seller_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+
+	bSizer15->Add( add_seller_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
+	import_seller_button = new wxButton( this, wxID_ANY, wxT("Import"), wxDefaultPosition, wxDefaultSize, 0 );
+	import_seller_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	import_seller_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+
+	bSizer15->Add( import_seller_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
 
 	bSizer13->Add( bSizer15, 1, wxEXPAND, 5 );
 
@@ -83,6 +107,15 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	export_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
 	bSizer151->Add( export_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
+
+	bSizer151->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	export_seller_button = new wxButton( this, wxID_ANY, wxT("Eksport"), wxDefaultPosition, wxDefaultSize, 0 );
+	export_seller_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	export_seller_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+
+	bSizer151->Add( export_seller_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	bSizer13->Add( bSizer151, 1, wxEXPAND, 5 );
@@ -101,7 +134,10 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	logout->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::logoutOnButtonClick ), NULL, this );
 	add_car_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_car_buttonOnButtonClick ), NULL, this );
 	import_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
+	add_seller_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_seller_buttonOnButtonClick ), NULL, this );
+	import_seller_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
 	export_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
+	export_seller_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_seller_buttonOnButtonClick ), NULL, this );
 }
 
 main_frame::~main_frame()
@@ -111,7 +147,10 @@ main_frame::~main_frame()
 	logout->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::logoutOnButtonClick ), NULL, this );
 	add_car_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_car_buttonOnButtonClick ), NULL, this );
 	import_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
+	add_seller_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_seller_buttonOnButtonClick ), NULL, this );
+	import_seller_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
 	export_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
+	export_seller_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_seller_buttonOnButtonClick ), NULL, this );
 
 }
 

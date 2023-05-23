@@ -31,7 +31,17 @@ void TGdesk_main_frame::import_buttonOnButtonClick( wxCommandEvent& event )
 // TODO: Implement import_buttonOnButtonClick
 }
 
+void TGdesk_main_frame::add_seller_buttonOnButtonClick( wxCommandEvent& event )
+{
+// TODO: Implement add_seller_buttonOnButtonClick
+}
+
 void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
 {
 // TODO: Implement export_buttonOnButtonClick
+}
+
+void TGdesk_main_frame::export_seller_buttonOnButtonClick( wxCommandEvent& event )
+{
+// TODO: Implement export_seller_buttonOnButtonClick
 }

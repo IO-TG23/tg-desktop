@@ -22,11 +22,14 @@ class TGdesk_main_frame : public main_frame
 		void logoutOnButtonClick( wxCommandEvent& event );
 		void add_car_buttonOnButtonClick( wxCommandEvent& event );
 		void import_buttonOnButtonClick( wxCommandEvent& event );
+		void add_seller_buttonOnButtonClick( wxCommandEvent& event );
 		void export_buttonOnButtonClick( wxCommandEvent& event );
+		void export_seller_buttonOnButtonClick( wxCommandEvent& event );
 	public:
 		/** Constructor */
 		TGdesk_main_frame( wxWindow* parent );
 	//// end generated class members
+
 
 
 
