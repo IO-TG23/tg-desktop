@@ -23,6 +23,8 @@ class TGdesk_delete_client_form : public delete_client_form
 		TGdesk_delete_client_form( wxWindow* parent );
 	//// end generated class members
 
+
+
 };
 
 #endif // __TGdesk_delete_client_form__

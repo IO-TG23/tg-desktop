@@ -9,8 +9,8 @@ delete_client_form( parent )
 
 void TGdesk_delete_client_form::add_client_formOnClose( wxCloseEvent& event )
 {
-    Destroy();
-    GetParent()->Enable();
+Destroy();
+GetParent()->Enable();
 }
 
 void TGdesk_delete_client_form::add_client_formOnIconize( wxIconizeEvent& event )

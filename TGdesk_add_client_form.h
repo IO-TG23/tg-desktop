@@ -20,11 +20,16 @@ class TGdesk_add_client_form : public add_client_form
 		void id_enterOnText( wxCommandEvent& event );
 		void id_enterOnTextEnter( wxCommandEvent& event );
 		void id_enterOnTextMaxLen( wxCommandEvent& event );
+		void email_enterOnText( wxCommandEvent& event );
+		void email_enterOnTextEnter( wxCommandEvent& event );
+		void email_enterOnTextMaxLen( wxCommandEvent& event );
 		void add_buttonOnButtonClick( wxCommandEvent& event );
 	public:
 		/** Constructor */
 		TGdesk_add_client_form( wxWindow* parent );
 	//// end generated class members
+
+
 
 };
 

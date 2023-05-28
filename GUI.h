@@ -151,6 +151,8 @@ class add_client_form : public wxDialog
 	protected:
 		wxStaticText* m_staticText1;
 		wxTextCtrl* id_enter;
+		wxStaticText* m_staticText11;
+		wxTextCtrl* email_enter;
 		wxButton* add_button;
 
 		// Virtual event handlers, override them in your derived class
@@ -159,6 +161,9 @@ class add_client_form : public wxDialog
 		virtual void id_enterOnText( wxCommandEvent& event ) { event.Skip(); }
 		virtual void id_enterOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
 		virtual void id_enterOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void add_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
 

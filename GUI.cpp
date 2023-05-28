@@ -397,17 +397,39 @@ add_client_form::add_client_form( wxWindow* parent, wxWindowID id, const wxStrin
 	m_staticText1->Wrap( -1 );
 	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
-	bSizer2->Add( m_staticText1, 1, wxALIGN_RIGHT|wxALL, 5 );
+	bSizer2->Add( m_staticText1, 1, wxALL, 5 );
 
 	id_enter = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 	id_enter->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	id_enter->SetBackgroundColour( wxColour( 144, 144, 144 ) );
 	id_enter->SetMinSize( wxSize( 150,-1 ) );
 
-	bSizer2->Add( id_enter, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer2->Add( id_enter, 0, wxALL, 5 );
 
 
-	bSizer1->Add( bSizer2, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer1->Add( bSizer2, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer21;
+	bSizer21 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer21->Add( 0, 20, 0, 0, 5 );
+
+	m_staticText11 = new wxStaticText( this, wxID_ANY, wxT("e-mail"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText11->Wrap( -1 );
+	m_staticText11->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer21->Add( m_staticText11, 1, wxALL, 5 );
+
+	email_enter = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
+	email_enter->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	email_enter->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+	email_enter->SetMinSize( wxSize( 150,-1 ) );
+
+	bSizer21->Add( email_enter, 0, wxALL, 5 );
+
+
+	bSizer1->Add( bSizer21, 0, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
 
 	bSizer1->Add( 0, 15, 0, 0, 5 );
@@ -431,6 +453,9 @@ add_client_form::add_client_form( wxWindow* parent, wxWindowID id, const wxStrin
 	id_enter->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( add_client_form::id_enterOnText ), NULL, this );
 	id_enter->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( add_client_form::id_enterOnTextEnter ), NULL, this );
 	id_enter->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( add_client_form::id_enterOnTextMaxLen ), NULL, this );
+	email_enter->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( add_client_form::email_enterOnText ), NULL, this );
+	email_enter->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( add_client_form::email_enterOnTextEnter ), NULL, this );
+	email_enter->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( add_client_form::email_enterOnTextMaxLen ), NULL, this );
 	add_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_client_form::add_buttonOnButtonClick ), NULL, this );
 }
 
@@ -442,6 +467,9 @@ add_client_form::~add_client_form()
 	id_enter->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( add_client_form::id_enterOnText ), NULL, this );
 	id_enter->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( add_client_form::id_enterOnTextEnter ), NULL, this );
 	id_enter->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( add_client_form::id_enterOnTextMaxLen ), NULL, this );
+	email_enter->Disconnect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( add_client_form::email_enterOnText ), NULL, this );
+	email_enter->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( add_client_form::email_enterOnTextEnter ), NULL, this );
+	email_enter->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( add_client_form::email_enterOnTextMaxLen ), NULL, this );
 	add_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_client_form::add_buttonOnButtonClick ), NULL, this );
 
 }
@@ -465,7 +493,7 @@ delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const w
 	m_staticText1->Wrap( -1 );
 	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
-	bSizer2->Add( m_staticText1, 1, wxALIGN_RIGHT|wxALL, 5 );
+	bSizer2->Add( m_staticText1, 1, wxALL, 5 );
 
 	wxArrayString client_idChoices;
 	client_id = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, client_idChoices, 0 );
@@ -485,7 +513,7 @@ delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const w
 	del_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
 	del_button->SetBackgroundColour( wxColour( 50, 19, 11 ) );
 
-	bSizer1->Add( del_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer1->Add( del_button, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
 
 	this->SetSizer( bSizer1 );

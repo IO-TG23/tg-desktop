@@ -105,6 +105,8 @@ class TGdesk_login_dial : public login_dial
 
 
 
+
+
 };
 
 #endif // __TGdesk_login_dial__
