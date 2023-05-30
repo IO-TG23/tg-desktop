@@ -142,6 +142,66 @@ class register_dial : public wxDialog
 };
 
 ///////////////////////////////////////////////////////////////////////////////
+/// Class add_client_form
+///////////////////////////////////////////////////////////////////////////////
+class add_client_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxTextCtrl* id_enter;
+		wxStaticText* m_staticText11;
+		wxTextCtrl* email_enter;
+		wxButton* add_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void add_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void add_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void id_enterOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void id_enterOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void id_enterOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void add_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		add_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~add_client_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class delete_client_form
+///////////////////////////////////////////////////////////////////////////////
+class delete_client_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxChoice* client_id;
+		wxButton* del_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void add_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void add_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void del_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		delete_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Usuń klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~delete_client_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
 /// Class add_car_form
 ///////////////////////////////////////////////////////////////////////////////
 class add_car_form : public wxFrame
