@@ -2,7 +2,12 @@
 
 ## Opis
 
-Aplikacja desktopowa komisu samochodowego dedykowana dla właściciela komisu, pracowników oraz klientów chcących sprzedać pojazd. Umożliwia dodanie nowych ofert poprzez wypełnienie formularza, import istniejących pojazdów z pliku, eksport informacji o dostępnych pojazdach, a także dla właściciela i pracowników logowanie i rejestrację.
+Aplikacja desktopowa będąca częścią projektu "Tanie graty 23", dotyczącego komisu samochodowego specjalizującego się w sprzedaży tanich pojazdów. Jest dedykowana dla właściciela komisu, pracowników oraz klientów chcących sprzedać pojazd. Zrealizowano następujące funkcjonalności:
+ * rejestracja oraz logowanie
+ * możliwość dodania nowego pojazdu poprzez wypełnienie formularza
+ * dodanie nowego klienta
+ * import/ eksport informacji o pojazdach
+ * eksport danych o klientach do plików o formacie: xlsx lub pdf
 
 
 ## Konfiguracja:
@@ -15,6 +20,8 @@ xhost +
 ```
 
 ## Uruchomienie konsoli:
+Aplikację można uruchomić korzystając z pliku wykonywalnego exe lub Dockera. Wówczas należy użyć komendy:
+
 ``` bash
 sudo docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix/ -it nazwa /bin/bash
 ```
