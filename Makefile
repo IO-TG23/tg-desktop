@@ -1,9 +1,9 @@
-OBJS	= main.o GUI.o TGdesk_login_dial.o TGdesk_main_frame.o TGdesk_add_car_form.o TGdesk_register_dial.o TGdesk_delete_client_form.o TGdesk_add_client_form.o
+OBJS	= main.o GUI.o TGdesk_login_dial.o TGdesk_main_frame.o TGdesk_add_car_form.o TGdesk_register_dial.o TGdesk_delete_client_form.o TGdesk_add_client_form.o Backend_API.o TGdesk_Register_QR.o
 SOURCE	= *.cpp
 OUT	= a.out
 CC	 = g++
 FLAGS	 = -g -c -Wall `wx-config --cxxflags`
-LFLAGS	 = `wx-config --libs`
+LFLAGS	 = `wx-config --libs` -lcurl -L/usr/include -ljsoncpp
 
 all: $(OBJS)
 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
@@ -31,6 +31,12 @@ TGdesk_add_client_form.o: TGdesk_add_client_form.cpp
 	
 TGdesk_delete_client_form.o: TGdesk_delete_client_form.cpp
 	$(CC) $(FLAGS) TGdesk_delete_client_form.cpp 
+
+Backend_API.o: Backend_API.cpp
+	$(CC) $(FLAGS) Backend_API.cpp
+
+TGdesk_Register_QR.o: TGdesk_Register_QR.cpp
+	$(CC) $(FLAGS) TGdesk_Register_QR.cpp
 	
 clean:
 	rm -f $(OBJS) $(OUT)

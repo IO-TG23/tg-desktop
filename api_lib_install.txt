@@ -1,0 +1,11 @@
+  417  sudo apt-get install minicom
+  440  sudo apt-get install lxrandr
+  561  sudo apt-get install curl
+  564  sudo apt install libcurl4-gnutls-dev
+  567  sudo apt-get install libjsoncpp-dev
+  570  sudo apt-get install libjsoncpp-dev
+  597  sudo apt-get install ljson0 ljson0-dev
+  598  sudo apt-get install libjson0 libjson0-dev
+  603  sudo apt install libjsoncpp24 libjsoncpp-dev
+  729  history | grep install
+  730  history | grep install > programms/tanie_graty/api_lib_install.txt

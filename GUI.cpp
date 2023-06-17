@@ -951,3 +951,44 @@ add_car_form::~add_car_form()
 	enter->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( add_car_form::enterOnButtonClick ), NULL, this );
 
 }
+
+Register_QR::Register_QR( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxBoxSizer* bSizer31;
+	bSizer31 = new wxBoxSizer( wxVERTICAL );
+
+	label = new wxStaticText( this, wxID_ANY, wxT("Przesłano zgłoszenie. Zeskanuj kod do logowania:"), wxDefaultPosition, wxDefaultSize, 0 );
+	label->Wrap( -1 );
+	bSizer31->Add( label, 0, wxALL, 5 );
+
+	m_bitmap1 = new wxStaticBitmap( this, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap1->SetMinSize( wxSize( -1,300 ) );
+
+	bSizer31->Add( m_bitmap1, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+
+	dialog = new wxStdDialogButtonSizer();
+	dialogOK = new wxButton( this, wxID_OK );
+	dialog->AddButton( dialogOK );
+	dialog->Realize();
+
+	bSizer31->Add( dialog, 1, wxEXPAND, 5 );
+
+
+	this->SetSizer( bSizer31 );
+	this->Layout();
+	bSizer31->Fit( this );
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	dialogOK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Register_QR::dialogOnOKButtonClick ), NULL, this );
+}
+
+Register_QR::~Register_QR()
+{
+	// Disconnect Events
+	dialogOK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Register_QR::dialogOnOKButtonClick ), NULL, this );
+
+}

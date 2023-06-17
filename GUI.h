@@ -24,6 +24,7 @@
 #include <wx/textctrl.h>
 #include <wx/dialog.h>
 #include <wx/choice.h>
+#include <wx/statbmp.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -267,6 +268,31 @@ class add_car_form : public wxFrame
 		add_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj pojazd"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,500 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~add_car_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class Register_QR
+///////////////////////////////////////////////////////////////////////////////
+class Register_QR : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* label;
+		wxStaticBitmap* m_bitmap1;
+		wxStdDialogButtonSizer* dialog;
+		wxButton* dialogOK;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void dialogOnOKButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		Register_QR( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Przesłano"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+
+		~Register_QR();
 
 };
 
