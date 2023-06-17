@@ -1,4 +1,4 @@
-OBJS	= main.o GUI.o TGdesk_login_dial.o TGdesk_main_frame.o TGdesk_add_car_form.o TGdesk_register_dial.o TGdesk_delete_client_form.o TGdesk_add_client_form.o
+OBJS	= main.o GUI.o TGdesk_login_dial.o TGdesk_main_frame.o TGdesk_add_car_form.o TGdesk_register_dial.o
 SOURCE	= *.cpp
 OUT	= a.out
 CC	 = g++
@@ -25,13 +25,6 @@ TGdesk_main_frame.o: TGdesk_main_frame.cpp
 
 TGdesk_add_car_form.o: TGdesk_add_car_form.cpp
 	$(CC) $(FLAGS) TGdesk_add_car_form.cpp 
-
-TGdesk_add_client_form.o: TGdesk_add_client_form.cpp
-	$(CC) $(FLAGS) TGdesk_add_client_form.cpp 
-	
-TGdesk_delete_client_form.o: TGdesk_delete_client_form.cpp
-	$(CC) $(FLAGS) TGdesk_delete_client_form.cpp 
-	
 clean:
 	rm -f $(OBJS) $(OUT)
 
