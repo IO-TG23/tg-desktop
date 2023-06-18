@@ -15,13 +15,9 @@ Destroy();
 
 void TGdesk_Register_QR::SetImage(std::string s)
 {
-    wxImage tmp(219,219);
-
     s.erase(s.begin(), s.begin()+22);
 
     wxMemoryBuffer b = wxBase64Decode(s);
-    // tmp.SetData(reinterpret_cast<unsigned char*>(b.GetData()), true);
-    // wxBitmap bmp(tmp);
     unsigned char image_png[b.GetDataLen()];
     auto p = reinterpret_cast<unsigned char*>(b.GetData());
     memcpy(image_png, p, b.GetDataLen());
