@@ -4,7 +4,7 @@
 
 #include <cstdio>
 #include <curl/curl.h>
-#include <json/json.h>
+#include <jsoncpp/json/json.h>
 #include <exception>
 // #include <iostream>
 #include <string>
@@ -22,6 +22,7 @@ class Backend_API{
     }
 
     Json::Value sign_up(std::string email, std::string passwd, std::string repeat_passwd);
+    Json::Value login(std::string email, std::string passwd, std::string code);
 
     private:
     Json::Value str2json(std::string strJson);

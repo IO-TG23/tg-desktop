@@ -66,7 +66,7 @@ void TGdesk_register_dial::passwd2_fieldOnTextMaxLen( wxCommandEvent& event )
 void TGdesk_register_dial::register_buttonOnButtonClick( wxCommandEvent& event )
 {
 
-    wxProgressDialog a(wxT("Komunikacja z serwerem"), wxT("Oczekiwanie na odpowiedź serwera."), 100, this);
+wxProgressDialog a(wxT("Komunikacja z serwerem"), wxT("Oczekiwanie na odpowiedź serwera."), 100, this);
 a.Pulse();
 
 if(!TGdesk_login_dial::mail_check(login_field->GetValue().ToStdString())){
@@ -97,8 +97,8 @@ Json::Value response;
 try{
 response = api.sign_up(login_field->GetValue().ToStdString(),psw1,psw2);
 } catch (std::exception& e){
-    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-    std::wstring message = converter.from_bytes(e.what());
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(e.what());
 wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
 }
@@ -112,7 +112,7 @@ c='\0';
 
 bool noErrors = true;
 for(auto m : response["messages"]){
-    // std::cout << "1\n";
+// std::cout << "1\n";
 noErrors = false;
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 std::wstring message = converter.from_bytes(m.asString());
@@ -121,24 +121,24 @@ dlg.ShowModal();
 }
 
 if(!(response["errors"].isNull())){
-    for(auto m : response["errors"]["appUser"]){
-        noErrors = false;
-        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-        std::wstring message = converter.from_bytes(m.asString());
-        wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
-        dlg.ShowModal();
-    }
+for(auto m : response["errors"]["appUser"]){
+noErrors = false;
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(m.asString());
+wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+}
 }
 
 response = response["message"];
 if(response.isNull()){
-    noErrors=false;
+noErrors=false;
 wxMessageDialog dlg(this, wxT("Błąd odpowiedzi serwera."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
 } else if(strncmp(response.asCString(),"data:image/png;base64",21)!=0){
-    noErrors=false;
-    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-        std::wstring message = converter.from_bytes(response.asString());
+noErrors=false;
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(response.asString());
 wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK);
 dlg.ShowModal();
 } else if(strncmp(response.asCString(),"data:image/png;base64",21)==0 && noErrors){

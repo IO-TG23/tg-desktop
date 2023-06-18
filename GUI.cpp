@@ -181,7 +181,7 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_staticText1->Wrap( -1 );
 	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
-	bSizer3->Add( m_staticText1, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer3->Add( m_staticText1, 1, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	login_field = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
 	login_field->SetForegroundColour( wxColour( 77, 28, 16 ) );
@@ -200,7 +200,7 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 	m_staticText11->Wrap( -1 );
 	m_staticText11->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
-	bSizer31->Add( m_staticText11, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	bSizer31->Add( m_staticText11, 1, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	passwd_field = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD|wxTE_PROCESS_ENTER );
 	passwd_field->SetForegroundColour( wxColour( 77, 28, 16 ) );
@@ -211,6 +211,25 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 
 	bSizer2->Add( bSizer31, 1, wxALIGN_CENTER_HORIZONTAL, 5 );
+
+	wxBoxSizer* bSizer311;
+	bSizer311 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText111 = new wxStaticText( this, wxID_ANY, wxT("Kod:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText111->Wrap( -1 );
+	m_staticText111->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer311->Add( m_staticText111, 1, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	auth_code_field = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER );
+	auth_code_field->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	auth_code_field->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+	auth_code_field->SetMinSize( wxSize( 150,-1 ) );
+
+	bSizer311->Add( auth_code_field, 0, wxALL|wxALIGN_BOTTOM, 5 );
+
+
+	bSizer2->Add( bSizer311, 1, wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	bSizer2->Add( 0, 20, 0, 0, 5 );
@@ -243,6 +262,8 @@ login_dial::login_dial( wxWindow* parent, wxWindowID id, const wxString& title, 
 	login_field->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::login_fieldOnTextMaxLen ), NULL, this );
 	passwd_field->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::passwd_fieldOnTextEnter ), NULL, this );
 	passwd_field->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::passwd_fieldOnTextMaxLen ), NULL, this );
+	auth_code_field->Connect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::auth_code_fieldOnTextEnter ), NULL, this );
+	auth_code_field->Connect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::auth_code_fieldOnTextMaxLen ), NULL, this );
 	login_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::login_buttonOnButtonClick ), NULL, this );
 	regiter_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::regiter_buttonOnButtonClick ), NULL, this );
 }
@@ -255,6 +276,8 @@ login_dial::~login_dial()
 	login_field->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::login_fieldOnTextMaxLen ), NULL, this );
 	passwd_field->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::passwd_fieldOnTextEnter ), NULL, this );
 	passwd_field->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::passwd_fieldOnTextMaxLen ), NULL, this );
+	auth_code_field->Disconnect( wxEVT_COMMAND_TEXT_ENTER, wxCommandEventHandler( login_dial::auth_code_fieldOnTextEnter ), NULL, this );
+	auth_code_field->Disconnect( wxEVT_COMMAND_TEXT_MAXLEN, wxCommandEventHandler( login_dial::auth_code_fieldOnTextMaxLen ), NULL, this );
 	login_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::login_buttonOnButtonClick ), NULL, this );
 	regiter_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( login_dial::regiter_buttonOnButtonClick ), NULL, this );
 

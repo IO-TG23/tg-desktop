@@ -24,6 +24,7 @@ class TGdesk_Register_QR : public Register_QR
 		void SetImage(std::string s);
 
 
+
 };
 
 #endif // __TGdesk_Register_QR__

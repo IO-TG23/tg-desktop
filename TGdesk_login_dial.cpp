@@ -36,6 +36,16 @@ void TGdesk_login_dial::passwd_fieldOnTextMaxLen( wxCommandEvent& event )
 // TODO: Implement passwd_fieldOnTextMaxLen
 }
 
+void TGdesk_login_dial::auth_code_fieldOnTextEnter( wxCommandEvent& event )
+{
+// TODO: Implement auth_code_fieldOnTextEnter
+}
+
+void TGdesk_login_dial::auth_code_fieldOnTextMaxLen( wxCommandEvent& event )
+{
+// TODO: Implement auth_code_fieldOnTextMaxLen
+}
+
 void TGdesk_login_dial::login_buttonOnButtonClick( wxCommandEvent& event )
 {
 std::string login = login_field->GetValue().ToStdString();
@@ -61,6 +71,7 @@ wxDialog *signup = new TGdesk_register_dial(this);
 signup->Show(true);
 Disable();
 }
+
 
 
 

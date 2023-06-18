@@ -82,6 +82,8 @@ class login_dial : public wxDialog
 		wxTextCtrl* login_field;
 		wxStaticText* m_staticText11;
 		wxTextCtrl* passwd_field;
+		wxStaticText* m_staticText111;
+		wxTextCtrl* auth_code_field;
 		wxButton* login_button;
 		wxButton* regiter_button;
 
@@ -91,6 +93,8 @@ class login_dial : public wxDialog
 		virtual void login_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void passwd_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
 		virtual void passwd_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void auth_code_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void auth_code_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void login_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void regiter_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
