@@ -94,9 +94,11 @@ return;
 
 Backend_API api;
 Json::Value response;
+bool noErrors = true;
 try{
 response = api.sign_up(login_field->GetValue().ToStdString(),psw1,psw2);
 } catch (std::exception& e){
+    noErrors=false;
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 std::wstring message = converter.from_bytes(e.what());
 wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
@@ -110,7 +112,6 @@ c='\0';
 for(char& c : psw2)
 c='\0';
 
-bool noErrors = true;
 for(auto m : response["messages"]){
 // std::cout << "1\n";
 noErrors = false;

@@ -36,8 +36,11 @@ class TGdesk_login_dial : public login_dial
 
 	private:
 	bool loggedin = false;
+	wxFrame* main;
 
 	public:
+	/** Constructor */
+		TGdesk_login_dial( wxWindow* parent, wxFrame* main_w) : login_dial( parent ), main{main_w} {}
 	bool is_logged() const {return loggedin;}
 
 	static bool mail_check(std::string email){

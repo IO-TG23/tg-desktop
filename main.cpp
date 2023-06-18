@@ -26,8 +26,7 @@ bool MyApp::OnInit()
 
  wxFrame *mainFrame = new TGdesk_main_frame(NULL);
  mainFrame->Show(true);
-
- wxDialog *logging = new TGdesk_login_dial(mainFrame);
+ wxDialog *logging = new TGdesk_login_dial(NULL, mainFrame);
  logging->Show(true);
  SetTopWindow(logging);
 
