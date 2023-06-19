@@ -65,6 +65,10 @@ void TGdesk_register_dial::passwd2_fieldOnTextMaxLen( wxCommandEvent& event )
 
 void TGdesk_register_dial::register_buttonOnButtonClick( wxCommandEvent& event )
 {
+
+wxProgressDialog a(wxT("Komunikacja z serwerem"), wxT("Oczekiwanie na odpowiedź serwera."), 100, this);
+a.Pulse();
+
 if(!TGdesk_login_dial::mail_check(login_field->GetValue().ToStdString())){
 wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
@@ -86,8 +90,66 @@ dlg.ShowModal();
 return;
 }
 
-wxMessageDialog dlg(this, wxT("Przesłano zgłoszenie."), wxMessageBoxCaptionStr, wxOK);
+
+
+Backend_API api;
+Json::Value response;
+bool noErrors = true;
+try{
+response = api.sign_up(login_field->GetValue().ToStdString(),psw1,psw2);
+} catch (std::exception& e){
+    noErrors=false;
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(e.what());
+wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
+}
+
+a.Close();
+
+for(char& c : psw1)
+c='\0';
+for(char& c : psw2)
+c='\0';
+
+for(auto m : response["messages"]){
+// std::cout << "1\n";
+noErrors = false;
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(m.asString());
+wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+}
+
+if(!(response["errors"].isNull())){
+for(auto m : response["errors"]["appUser"]){
+noErrors = false;
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(m.asString());
+wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+}
+}
+
+response = response["message"];
+if(response.isNull()){
+noErrors=false;
+wxMessageDialog dlg(this, wxT("Błąd odpowiedzi serwera."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+dlg.ShowModal();
+} else if(strncmp(response.asCString(),"data:image/png;base64",21)!=0){
+noErrors=false;
+std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+std::wstring message = converter.from_bytes(response.asString());
+wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK);
+dlg.ShowModal();
+} else if(strncmp(response.asCString(),"data:image/png;base64",21)==0 && noErrors){
+TGdesk_Register_QR dlg(this);
+dlg.SetImage(response.asCString());
+dlg.ShowModal();
+}
+
+if(!noErrors) return;
+
 
 Close();
 }

@@ -24,6 +24,7 @@
 #include <wx/textctrl.h>
 #include <wx/dialog.h>
 #include <wx/choice.h>
+#include <wx/statbmp.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -81,6 +82,8 @@ class login_dial : public wxDialog
 		wxTextCtrl* login_field;
 		wxStaticText* m_staticText11;
 		wxTextCtrl* passwd_field;
+		wxStaticText* m_staticText111;
+		wxTextCtrl* auth_code_field;
 		wxButton* login_button;
 		wxButton* regiter_button;
 
@@ -90,6 +93,8 @@ class login_dial : public wxDialog
 		virtual void login_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void passwd_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
 		virtual void passwd_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void auth_code_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void auth_code_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void login_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void regiter_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
@@ -267,6 +272,31 @@ class add_car_form : public wxFrame
 		add_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj pojazd"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,500 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~add_car_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class Register_QR
+///////////////////////////////////////////////////////////////////////////////
+class Register_QR : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* label;
+		wxStaticBitmap* m_bitmap1;
+		wxStdDialogButtonSizer* dialog;
+		wxButton* dialogOK;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void dialogOnOKButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		Register_QR( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Przesłano"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+
+		~Register_QR();
 
 };
 
