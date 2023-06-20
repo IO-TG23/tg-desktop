@@ -200,7 +200,7 @@ class delete_client_form : public wxDialog
 
 	public:
 
-		delete_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Usuń klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+		delete_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Usuń klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 246,134 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
 
 		~delete_client_form();
 
@@ -214,6 +214,8 @@ class add_car_form : public wxFrame
 	private:
 
 	protected:
+		wxStaticText* m_staticText10113;
+		wxTextCtrl* name;
 		wxStaticText* m_staticText1012;
 		wxChoice* drive_type;
 		wxChoice* gear_box;

@@ -50,9 +50,10 @@ void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
 
 void TGdesk_main_frame::del_buttonOnButtonClick( wxCommandEvent& event )
 {
+
+Disable();
 wxDialog *form = new TGdesk_delete_client_form(this);
 form->Show();
-Disable();
 }
 
 void TGdesk_main_frame::export_client_buttonOnButtonClick( wxCommandEvent& event )

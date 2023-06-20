@@ -71,6 +71,28 @@ Json::Value Backend_API::login(std::string email, std::string passwd, std::strin
    return str2json(strJson);
 }
 
+Json::Value Backend_API::get_clients_list(){
+  CURL *curl;
+  CURLcode res;
+  std::string strJson; 
+  
+  curl = curl_easy_init();
+  if (curl) {
+    std::string url = addr+"/Client";
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &strJson);
+    res = curl_easy_perform(curl);
+    if(res != CURLE_OK)
+      throw std::runtime_error("Błąd połączenia. Skontaktuj się z pomocą techniczną.");
+  }
+   
+
+  curl_easy_cleanup(curl);
+  
+  return str2json(strJson);
+}
+
 size_t Backend_API::WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
     ((std::string*)userp)->append((char*)contents, size * nmemb);

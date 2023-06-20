@@ -499,7 +499,7 @@ add_client_form::~add_client_form()
 
 delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+	this->SetSizeHints( wxSize( 600,160 ), wxDefaultSize );
 	this->SetForegroundColour( wxColour( 30, 11, 6 ) );
 	this->SetBackgroundColour( wxColour( 128, 48, 28 ) );
 
@@ -509,20 +509,19 @@ delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const w
 	wxBoxSizer* bSizer2;
 	bSizer2 = new wxBoxSizer( wxHORIZONTAL );
 
-
-	bSizer2->Add( 0, 20, 0, 0, 5 );
-
-	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Numer id"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Użytkownik"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText1->Wrap( -1 );
 	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
 
-	bSizer2->Add( m_staticText1, 1, wxALL, 5 );
+	bSizer2->Add( m_staticText1, 1, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	wxArrayString client_idChoices;
 	client_id = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, client_idChoices, 0 );
 	client_id->SetSelection( 0 );
 	client_id->SetForegroundColour( wxColour( 77, 28, 16 ) );
 	client_id->SetBackgroundColour( wxColour( 255, 255, 255 ) );
+	client_id->SetMinSize( wxSize( -1,40 ) );
+	client_id->SetMaxSize( wxSize( 400,-1 ) );
 
 	bSizer2->Add( client_id, 0, wxALL, 5 );
 
@@ -541,7 +540,6 @@ delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const w
 
 	this->SetSizer( bSizer1 );
 	this->Layout();
-	bSizer1->Fit( this );
 
 	this->Centre( wxBOTH );
 
@@ -568,6 +566,24 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	wxBoxSizer* bSizer15;
 	bSizer15 = new wxBoxSizer( wxVERTICAL );
+
+	wxBoxSizer* bSizer184;
+	bSizer184 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText10113 = new wxStaticText( this, wxID_ANY, wxT("Nazwa:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10113->Wrap( -1 );
+	m_staticText10113->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer184->Add( m_staticText10113, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	name = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 120,-1 ), 0 );
+	name->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	name->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+
+	bSizer184->Add( name, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+
+	bSizer15->Add( bSizer184, 1, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer17;
 	bSizer17 = new wxBoxSizer( wxHORIZONTAL );
@@ -938,6 +954,7 @@ add_car_form::add_car_form( wxWindow* parent, wxWindowID id, const wxString& tit
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
+	name->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
 	years->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
 	radius->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::radiusOnChar ), NULL, this );
 	doors_num->Connect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::doors_numOnChar ), NULL, this );
@@ -958,6 +975,7 @@ add_car_form::~add_car_form()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( add_car_form::add_car_formOnClose ) );
+	name->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
 	years->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::yearsOnChar ), NULL, this );
 	radius->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::radiusOnChar ), NULL, this );
 	doors_num->Disconnect( wxEVT_CHAR, wxKeyEventHandler( add_car_form::doors_numOnChar ), NULL, this );
