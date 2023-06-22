@@ -111,6 +111,7 @@ wxMessageDialog dlg(this, wxT("Błąd odpowiedzi serwera."), wxMessageBoxCaption
 dlg.ShowModal();
 }  else if(noErrors){
 loggedin=true;
+std::cout << response << std::endl;
 } else {
 noErrors=false;
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
@@ -133,6 +134,13 @@ wxDialog *signup = new TGdesk_register_dial(this);
 signup->Show(true);
 Disable();
 }
+
+
+
+
+
+
+
 
 
 
