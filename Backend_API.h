@@ -9,6 +9,8 @@
 // #include <iostream>
 #include <string>
 #include <cstring>
+#include <wx/base64.h>
+
 
 class Backend_API{
 public:
@@ -24,6 +26,27 @@ public:
     Json::Value sign_up(std::string email, std::string passwd, std::string repeat_passwd);
     Json::Value login(std::string email, std::string passwd, std::string code);
     Json::Value get_clients_list();
+    Json::Value post_offer(std::string token,
+                            std::string name,
+                            std::string v_descr,
+                            std::string beg_y,
+                            std::string end_y,
+                            std::string doors_num,
+                            std::string seat_num,
+                            std::string boot_cap,
+                            std::string len,
+                            std::string width,
+                            std::string height,
+                            std::string wheel_b,
+                            std::string back_wheel,
+                            std::string fron_wheel,
+                            std::string gearbox,
+                            std::string drive,
+                            std::string client_id_json,
+                            std::string price,
+                            std::string offer_descr,
+                            std::string email,
+                            std::string phone_num);
 
 private:
     Json::Value str2json(std::string strJson);
