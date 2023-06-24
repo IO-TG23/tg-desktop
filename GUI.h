@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 3.10.1-0-g8feb16b)
+// C++ code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -24,12 +24,12 @@
 #include <wx/textctrl.h>
 #include <wx/dialog.h>
 #include <wx/choice.h>
+#include <wx/statbmp.h>
 #include <wx/wx.h>
 #include <wx/filedlg.h>
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
 #include <wx/wxhtml.h>
-
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -87,6 +87,8 @@ class login_dial : public wxDialog
 		wxTextCtrl* login_field;
 		wxStaticText* m_staticText11;
 		wxTextCtrl* passwd_field;
+		wxStaticText* m_staticText111;
+		wxTextCtrl* auth_code_field;
 		wxButton* login_button;
 		wxButton* regiter_button;
 
@@ -96,6 +98,8 @@ class login_dial : public wxDialog
 		virtual void login_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void passwd_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
 		virtual void passwd_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void auth_code_fieldOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void auth_code_fieldOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
 		virtual void login_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void regiter_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
@@ -148,6 +152,68 @@ class register_dial : public wxDialog
 };
 
 ///////////////////////////////////////////////////////////////////////////////
+/// Class add_client_form
+///////////////////////////////////////////////////////////////////////////////
+class add_client_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxTextCtrl* id_enter;
+		wxStaticText* m_staticText11;
+		wxTextCtrl* email_enter;
+		wxButton* add_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void add_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void add_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void id_enterOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void id_enterOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void id_enterOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnText( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnTextEnter( wxCommandEvent& event ) { event.Skip(); }
+		virtual void email_enterOnTextMaxLen( wxCommandEvent& event ) { event.Skip(); }
+		virtual void add_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		add_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~add_client_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class delete_client_form
+///////////////////////////////////////////////////////////////////////////////
+class delete_client_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxChoice* client_id;
+		wxStaticText* m_staticText11;
+		wxTextCtrl* repeat;
+		wxButton* del_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void add_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void add_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void del_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		delete_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Usuń klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 246,134 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~delete_client_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
 /// Class add_car_form
 ///////////////////////////////////////////////////////////////////////////////
 class add_car_form : public wxFrame
@@ -155,14 +221,15 @@ class add_car_form : public wxFrame
 	private:
 
 	protected:
+		wxStaticText* m_staticText10113;
+		wxTextCtrl* name;
 		wxStaticText* m_staticText1012;
 		wxChoice* drive_type;
 		wxChoice* gear_box;
 		wxStaticText* m_staticText1011;
-		wxTextCtrl* years;
-		wxStaticText* m_staticText10112;
-		wxTextCtrl* radius;
-		wxStaticText* m_staticText10111233;
+		wxTextCtrl* year_b;
+		wxStaticText* m_staticText10114;
+		wxTextCtrl* year_e;
 		wxStaticText* m_staticText101;
 		wxTextCtrl* doors_num;
 		wxStaticText* m_staticText1014;
@@ -187,13 +254,22 @@ class add_car_form : public wxFrame
 		wxStaticText* m_staticText10111232;
 		wxStaticText* m_staticText1011111;
 		wxTextCtrl* descr;
+		wxStaticText* m_staticText1011112;
+		wxTextCtrl* price;
+		wxStaticText* m_staticText10161;
+		wxTextCtrl* phone_num;
+		wxStaticText* m_staticText101411;
+		wxTextCtrl* email;
+		wxStaticText* m_staticText10111111;
+		wxTextCtrl* descr_offer;
 		wxButton* back;
 		wxButton* enter;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void add_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
-		virtual void yearsOnChar( wxKeyEvent& event ) { event.Skip(); }
-		virtual void radiusOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void nameOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void year_bOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void year_eOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void doors_numOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void seat_numOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void cargoOnChar( wxKeyEvent& event ) { event.Skip(); }
@@ -204,6 +280,10 @@ class add_car_form : public wxFrame
 		virtual void fweelsOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void rweelsOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void descrOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void priceOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void phone_numOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void emailOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void descr_offerOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void enterOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
@@ -213,6 +293,82 @@ class add_car_form : public wxFrame
 		add_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj pojazd"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 600,500 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
 		~add_car_form();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class Register_QR
+///////////////////////////////////////////////////////////////////////////////
+class Register_QR : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* label;
+		wxStaticBitmap* m_bitmap1;
+		wxStdDialogButtonSizer* dialog;
+		wxButton* dialogOK;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void dialogOnOKButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		Register_QR( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Przesłano"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE );
+
+		~Register_QR();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class import_car_form
+///////////////////////////////////////////////////////////////////////////////
+class import_car_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText11;
+		wxButton* confirm_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void import_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void import_car_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void choose_file_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		import_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj pojazd"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,150 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~import_car_form();
+
+};
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class import_client_form
+///////////////////////////////////////////////////////////////////////////////
+class import_client_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText11;
+		wxButton* confirm_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void import_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void import_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void choose_file_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		import_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,150 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~import_client_form();
 
 };
 

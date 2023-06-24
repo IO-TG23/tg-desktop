@@ -28,19 +28,9 @@ Disable();
 
 void TGdesk_main_frame::import_buttonOnButtonClick( wxCommandEvent& event )
 {
-    wxString wildcard = "Excel Files (*.xlsx)|*.xlsx";
-    wxString defaultDir = wxEmptyString;
-    wxString defaultFile = wxEmptyString;
-
-    wxFileDialog openFileDialog(this, "Open File", defaultDir, defaultFile, wildcard, wxFD_OPEN | wxFD_FILE_MUST_EXIST);
-
-    if (openFileDialog.ShowModal() == wxID_OK) {
-        wxString filePath = openFileDialog.GetPath();
-        std::string selectedFile(filePath.mb_str());
-        
-
-
-    }
+wxDialog *form = new TGdesk_import_car_form(this);
+form->Show();
+Disable();
 }
 
 void TGdesk_main_frame::add_client_buttonOnButtonClick( wxCommandEvent& event )
@@ -50,7 +40,9 @@ void TGdesk_main_frame::add_client_buttonOnButtonClick( wxCommandEvent& event )
 
 void TGdesk_main_frame::import_client_buttonOnButtonClick( wxCommandEvent& event )
 {
-// TODO: Implement import_client_buttonOnButtonClick
+wxDialog * form = new TGdesk_import_client_form(this);
+form->Show();
+Disable();
 }
 
 void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
