@@ -64,9 +64,9 @@ void TGdesk_import_car_form::choose_file_buttonOnButtonClick( wxCommandEvent& ev
             getline(ip, c, ',');
             getline(ip, d, '\n');
 
-            std::cout << "Name: " << a << " " << b << '\n';
-            std::cout << "Age: " << c << '\n';
-            std::cout << "Weight: " << d << '\n';
+            std::cout  << a << " " << b << '\n';
+            std::cout  << c << '\n';
+            std::cout  << d << '\n';
             std::cout << "-------------------" << '\n';
 
             
