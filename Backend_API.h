@@ -26,6 +26,7 @@ public:
     Json::Value sign_up(std::string email, std::string passwd, std::string repeat_passwd);
     Json::Value login(std::string email, std::string passwd, std::string code);
     Json::Value get_clients_list();
+    Json::Value delete_client(std::string token, std::string client_id);
     Json::Value post_offer(std::string token,
                             std::string name,
                             std::string v_descr,

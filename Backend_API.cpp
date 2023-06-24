@@ -96,6 +96,46 @@ Json::Value Backend_API::get_clients_list(){
 }
 
 
+Json::Value Backend_API::delete_client(std::string token, std::string client_id){
+  struct curl_slist *slist1=nullptr;
+  CURL *curl;
+  CURLcode res;
+  std::string strJson;
+  /* get a curl handle */ 
+  curl = curl_easy_init();
+  slist1 = curl_slist_append(slist1, "Content-Type: application/json");
+  std::string token_header = "Authorization: Bearer " + token;
+  slist1 = curl_slist_append(slist1, token_header.c_str());
+  if(curl) {
+    /* First set the URL that is about to receive our POST. This URL can
+       just as well be a https:// URL if that is what should receive the
+       data. */ 
+    std::string url = addr+"/Client/"+client_id;
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    /* Now specify the POST data */
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &strJson);
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist1);
+    curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+
+    long http_code;
+    curl_easy_getinfo (curl, CURLINFO_RESPONSE_CODE, &http_code);
+    /* Perform the request, res will get the return code */ 
+    res = curl_easy_perform(curl);
+    /* Check for errors */ 
+    if(res != CURLE_OK)
+      throw std::runtime_error(curl_easy_strerror(res));
+    else if (http_code == 401L)
+      throw std::runtime_error("Błąd autoryzacji. Spróbuj zalogować się ponownie.");
+  }
+
+  curl_easy_cleanup(curl);
+  return str2json(strJson);
+}
+
+
+
+
 Json::Value Backend_API::post_offer(std::string token,
                             std::string name,
                             std::string v_descr,

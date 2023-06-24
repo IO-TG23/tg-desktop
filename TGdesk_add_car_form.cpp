@@ -112,11 +112,11 @@ c = event.GetKeyCode();
 
 if(is_num(c) || c=='\b')event.Skip();
 else if(c==',' || c=='.'){
-    if(dot) return;
-    else{
-        dot = true;
-        event.Skip();
-    }
+if(dot) return;
+else{
+dot = true;
+event.Skip();
+}
 }
 else return;
 }

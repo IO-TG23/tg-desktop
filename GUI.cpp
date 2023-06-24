@@ -550,11 +550,23 @@ delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const w
 
 	bSizer1->Add( 0, 15, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
 
+	wxBoxSizer* bSizer37;
+	bSizer37 = new wxBoxSizer( wxHORIZONTAL );
+
+	back = new wxButton( this, wxID_ANY, wxT("Cofnij"), wxDefaultPosition, wxDefaultSize, 0 );
+	back->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	back->SetBackgroundColour( wxColour( 50, 19, 11 ) );
+
+	bSizer37->Add( back, 0, wxALL, 5 );
+
 	del_button = new wxButton( this, wxID_ANY, wxT("Usuń"), wxDefaultPosition, wxDefaultSize, 0 );
 	del_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
 	del_button->SetBackgroundColour( wxColour( 50, 19, 11 ) );
 
-	bSizer1->Add( del_button, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+	bSizer37->Add( del_button, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+
+	bSizer1->Add( bSizer37, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	this->SetSizer( bSizer1 );
@@ -565,6 +577,7 @@ delete_client_form::delete_client_form( wxWindow* parent, wxWindowID id, const w
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( delete_client_form::add_client_formOnClose ) );
 	this->Connect( wxEVT_ICONIZE, wxIconizeEventHandler( delete_client_form::add_client_formOnIconize ) );
+	back->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( delete_client_form::backOnButtonClick ), NULL, this );
 	del_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( delete_client_form::del_buttonOnButtonClick ), NULL, this );
 }
 
@@ -573,6 +586,7 @@ delete_client_form::~delete_client_form()
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( delete_client_form::add_client_formOnClose ) );
 	this->Disconnect( wxEVT_ICONIZE, wxIconizeEventHandler( delete_client_form::add_client_formOnIconize ) );
+	back->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( delete_client_form::backOnButtonClick ), NULL, this );
 	del_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( delete_client_form::del_buttonOnButtonClick ), NULL, this );
 
 }

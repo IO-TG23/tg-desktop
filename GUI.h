@@ -192,11 +192,13 @@ class delete_client_form : public wxDialog
 		wxChoice* client_id;
 		wxStaticText* m_staticText11;
 		wxTextCtrl* repeat;
+		wxButton* back;
 		wxButton* del_button;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void add_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
 		virtual void add_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void del_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
 

@@ -14,7 +14,7 @@ Destroy();
 
 void TGdesk_main_frame::logoutOnButtonClick( wxCommandEvent& event )
 {
-    for(char& c : token) c = '\0';
+for(char& c : token) c = '\0';
 wxDialog *logging = new TGdesk_login_dial(NULL,this);
 logging->Show(true);
 Disable();
