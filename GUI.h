@@ -44,22 +44,18 @@ class main_frame : public wxFrame
 		wxStaticText* m_staticText41;
 		wxButton* add_car_button;
 		wxButton* import_button;
-		wxButton* add_client_button;
-		wxButton* import_client_button;
-		wxButton* export_button;
 		wxButton* del_button;
 		wxButton* export_client_button;
+		wxButton* export_button;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void main_frameOnClose( wxCloseEvent& event ) { event.Skip(); }
 		virtual void logoutOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void add_car_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void import_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
-		virtual void add_client_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
-		virtual void import_client_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
-		virtual void export_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void del_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void export_client_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void export_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:

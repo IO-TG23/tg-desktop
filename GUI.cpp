@@ -81,17 +81,17 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer15->Add( import_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	add_client_button = new wxButton( this, wxID_ANY, wxT("Dodaj"), wxDefaultPosition, wxDefaultSize, 0 );
-	add_client_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	add_client_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+	del_button = new wxButton( this, wxID_ANY, wxT("Usuń"), wxDefaultPosition, wxDefaultSize, 0 );
+	del_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	del_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer15->Add( add_client_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer15->Add( del_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	import_client_button = new wxButton( this, wxID_ANY, wxT("Import"), wxDefaultPosition, wxDefaultSize, 0 );
-	import_client_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	import_client_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
+	export_client_button = new wxButton( this, wxID_ANY, wxT("Eksport"), wxDefaultPosition, wxDefaultSize, 0 );
+	export_client_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	export_client_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer15->Add( import_client_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer15->Add( export_client_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
 
 	bSizer13->Add( bSizer15, 1, wxEXPAND, 5 );
@@ -108,17 +108,11 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 
 	bSizer151->Add( export_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
 
-	del_button = new wxButton( this, wxID_ANY, wxT("Usuń"), wxDefaultPosition, wxDefaultSize, 0 );
-	del_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	del_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer151->Add( del_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer151->Add( 0, 0, 1, 0, 5 );
 
-	export_client_button = new wxButton( this, wxID_ANY, wxT("Eksport"), wxDefaultPosition, wxDefaultSize, 0 );
-	export_client_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
-	export_client_button->SetBackgroundColour( wxColour( 51, 19, 11 ) );
 
-	bSizer151->Add( export_client_button, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer151->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
 	bSizer13->Add( bSizer151, 1, wxEXPAND, 5 );
@@ -137,11 +131,9 @@ main_frame::main_frame( wxWindow* parent, wxWindowID id, const wxString& title, 
 	logout->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::logoutOnButtonClick ), NULL, this );
 	add_car_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_car_buttonOnButtonClick ), NULL, this );
 	import_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
-	add_client_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_client_buttonOnButtonClick ), NULL, this );
-	import_client_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_client_buttonOnButtonClick ), NULL, this );
-	export_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
 	del_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::del_buttonOnButtonClick ), NULL, this );
 	export_client_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_client_buttonOnButtonClick ), NULL, this );
+	export_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
 }
 
 main_frame::~main_frame()
@@ -151,11 +143,9 @@ main_frame::~main_frame()
 	logout->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::logoutOnButtonClick ), NULL, this );
 	add_car_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_car_buttonOnButtonClick ), NULL, this );
 	import_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_buttonOnButtonClick ), NULL, this );
-	add_client_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::add_client_buttonOnButtonClick ), NULL, this );
-	import_client_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::import_client_buttonOnButtonClick ), NULL, this );
-	export_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
 	del_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::del_buttonOnButtonClick ), NULL, this );
 	export_client_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_client_buttonOnButtonClick ), NULL, this );
+	export_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( main_frame::export_buttonOnButtonClick ), NULL, this );
 
 }
 
