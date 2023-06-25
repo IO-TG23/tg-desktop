@@ -98,7 +98,7 @@ bool noErrors = true;
 try{
 response = api.sign_up(login_field->GetValue().ToStdString(),psw1,psw2);
 } catch (std::exception& e){
-    noErrors=false;
+noErrors=false;
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 std::wstring message = converter.from_bytes(e.what());
 wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);

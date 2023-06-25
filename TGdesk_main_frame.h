@@ -36,6 +36,17 @@ class TGdesk_main_frame : public main_frame
 		TGdesk_main_frame( wxWindow* parent );
 	//// end generated class members
 
+		std::string token;
+
+
+
+
+
+
+
+
+
+
 
 
 

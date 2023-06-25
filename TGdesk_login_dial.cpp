@@ -62,7 +62,7 @@ return;
 }
 
 if(psw.size()==0){
-    loggedin=false;
+loggedin=false;
 wxMessageDialog dlg(this, wxT("Musisz podać hasło."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
 return;
@@ -76,7 +76,7 @@ bool noErrors = true;
 try{
 response = api.login(login,psw,code);
 } catch (std::exception& e){
-    noErrors=false;
+noErrors=false;
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
 std::wstring message = converter.from_bytes(e.what());
 wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
@@ -111,6 +111,7 @@ wxMessageDialog dlg(this, wxT("Błąd odpowiedzi serwera."), wxMessageBoxCaption
 dlg.ShowModal();
 }  else if(noErrors){
 loggedin=true;
+dynamic_cast<TGdesk_main_frame*>(main)->token = response.asString();
 } else {
 noErrors=false;
 std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
@@ -133,6 +134,17 @@ wxDialog *signup = new TGdesk_register_dial(this);
 signup->Show(true);
 Disable();
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

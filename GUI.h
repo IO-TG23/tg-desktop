@@ -190,17 +190,21 @@ class delete_client_form : public wxDialog
 	protected:
 		wxStaticText* m_staticText1;
 		wxChoice* client_id;
+		wxStaticText* m_staticText11;
+		wxTextCtrl* repeat;
+		wxButton* back;
 		wxButton* del_button;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void add_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
 		virtual void add_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void del_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
 
-		delete_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Usuń klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+		delete_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Usuń klienta"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 246,134 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
 
 		~delete_client_form();
 
@@ -214,14 +218,15 @@ class add_car_form : public wxFrame
 	private:
 
 	protected:
+		wxStaticText* m_staticText10113;
+		wxTextCtrl* name;
 		wxStaticText* m_staticText1012;
 		wxChoice* drive_type;
 		wxChoice* gear_box;
 		wxStaticText* m_staticText1011;
-		wxTextCtrl* years;
-		wxStaticText* m_staticText10112;
-		wxTextCtrl* radius;
-		wxStaticText* m_staticText10111233;
+		wxTextCtrl* year_b;
+		wxStaticText* m_staticText10114;
+		wxTextCtrl* year_e;
 		wxStaticText* m_staticText101;
 		wxTextCtrl* doors_num;
 		wxStaticText* m_staticText1014;
@@ -246,13 +251,22 @@ class add_car_form : public wxFrame
 		wxStaticText* m_staticText10111232;
 		wxStaticText* m_staticText1011111;
 		wxTextCtrl* descr;
+		wxStaticText* m_staticText1011112;
+		wxTextCtrl* price;
+		wxStaticText* m_staticText10161;
+		wxTextCtrl* phone_num;
+		wxStaticText* m_staticText101411;
+		wxTextCtrl* email;
+		wxStaticText* m_staticText10111111;
+		wxTextCtrl* descr_offer;
 		wxButton* back;
 		wxButton* enter;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void add_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
-		virtual void yearsOnChar( wxKeyEvent& event ) { event.Skip(); }
-		virtual void radiusOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void nameOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void year_bOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void year_eOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void doors_numOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void seat_numOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void cargoOnChar( wxKeyEvent& event ) { event.Skip(); }
@@ -263,6 +277,10 @@ class add_car_form : public wxFrame
 		virtual void fweelsOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void rweelsOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void descrOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void priceOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void phone_numOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void emailOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void descr_offerOnChar( wxKeyEvent& event ) { event.Skip(); }
 		virtual void backOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 		virtual void enterOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
 

@@ -25,6 +25,17 @@ class TGdesk_Register_QR : public Register_QR
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 };
 
 #endif // __TGdesk_Register_QR__

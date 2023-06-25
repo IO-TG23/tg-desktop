@@ -14,6 +14,7 @@ Destroy();
 
 void TGdesk_main_frame::logoutOnButtonClick( wxCommandEvent& event )
 {
+for(char& c : token) c = '\0';
 wxDialog *logging = new TGdesk_login_dial(NULL,this);
 logging->Show(true);
 Disable();
@@ -50,9 +51,10 @@ void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
 
 void TGdesk_main_frame::del_buttonOnButtonClick( wxCommandEvent& event )
 {
+
+Disable();
 wxDialog *form = new TGdesk_delete_client_form(this);
 form->Show();
-Disable();
 }
 
 void TGdesk_main_frame::export_client_buttonOnButtonClick( wxCommandEvent& event )
