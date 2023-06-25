@@ -32,23 +32,6 @@ void TGdesk_main_frame::import_buttonOnButtonClick( wxCommandEvent& event )
 // TODO: Implement import_buttonOnButtonClick
 }
 
-void TGdesk_main_frame::add_client_buttonOnButtonClick( wxCommandEvent& event )
-{
-wxDialog * form = new TGdesk_add_client_form(this);
-form->Show();
-Disable();
-}
-
-void TGdesk_main_frame::import_client_buttonOnButtonClick( wxCommandEvent& event )
-{
-// TODO: Implement import_client_buttonOnButtonClick
-}
-
-void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
-{
-// TODO: Implement export_buttonOnButtonClick
-}
-
 void TGdesk_main_frame::del_buttonOnButtonClick( wxCommandEvent& event )
 {
 
@@ -61,3 +44,21 @@ void TGdesk_main_frame::export_client_buttonOnButtonClick( wxCommandEvent& event
 {
 // TODO: Implement export_client_buttonOnButtonClick
 }
+
+void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
+{
+// TODO: Implement export_buttonOnButtonClick
+}
+
+
+// void TGdesk_main_frame::add_client_buttonOnButtonClick( wxCommandEvent& event )
+// {
+// wxDialog * form = new TGdesk_add_client_form(this);
+// form->Show();
+// Disable();
+// }
+
+// void TGdesk_main_frame::import_client_buttonOnButtonClick( wxCommandEvent& event )
+// {
+// // TODO: Implement import_client_buttonOnButtonClick
+// }

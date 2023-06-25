@@ -134,7 +134,7 @@ dlg.ShowModal();
 response = response["message"];
 if(response.isNull()){
 noErrors=false;
-wxMessageDialog dlg(this, wxT("Błąd odpowiedzi serwera."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+wxMessageDialog dlg(this, wxT("Nie otrzymano kodu."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
 } else if(strncmp(response.asCString(),"data:image/png;base64",21)!=0){
 noErrors=false;

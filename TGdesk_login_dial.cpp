@@ -54,6 +54,10 @@ std::string login = login_field->GetValue().ToStdString();
 std::string psw = passwd_field->GetValue().ToStdString();
 std::string code = auth_code_field->GetValue().ToStdString();
 
+
+wxProgressDialog a(wxT("Komunikacja z serwerem"), wxT("Oczekiwanie na odpowiedź serwera."), 100, this);
+a.Pulse();
+
 if(!mail_check(login)){
 loggedin=false;
 wxMessageDialog dlg(this, "Niepoprawny adres e-mail.", wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
@@ -67,7 +71,7 @@ wxMessageDialog dlg(this, wxT("Musisz podać hasło."), wxMessageBoxCaptionStr, 
 dlg.ShowModal();
 return;
 }
-
+a.Pulse();
 // loggedin=true;
 {
 Backend_API api = Backend_API();
@@ -82,8 +86,9 @@ std::wstring message = converter.from_bytes(e.what());
 wxMessageDialog dlg(this, message, wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
 }
-
+a.Pulse();
 for(char& c : psw) c='\0';
+a.Close();
 
 for(auto m : response["messages"]){
 noErrors = false;
@@ -107,7 +112,7 @@ dlg.ShowModal();
 response = response["message"];
 if(response.isNull()){
 noErrors=false;
-wxMessageDialog dlg(this, wxT("Błąd odpowiedzi serwera."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
+wxMessageDialog dlg(this, wxT("Nie otrzymano tokenu."), wxMessageBoxCaptionStr, wxOK|wxICON_ERROR);
 dlg.ShowModal();
 }  else if(noErrors){
 loggedin=true;
@@ -134,6 +139,7 @@ wxDialog *signup = new TGdesk_register_dial(this);
 signup->Show(true);
 Disable();
 }
+
 
 
 

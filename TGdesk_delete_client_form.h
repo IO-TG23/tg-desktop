@@ -49,6 +49,7 @@ class TGdesk_delete_client_form : public delete_client_form
 
 
 
+
 };
 
 #endif // __TGdesk_delete_client_form__
