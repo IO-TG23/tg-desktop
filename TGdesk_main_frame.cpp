@@ -29,27 +29,10 @@ Disable();
 
 void TGdesk_main_frame::import_buttonOnButtonClick( wxCommandEvent& event )
 {
-// TODO: Implement import_buttonOnButtonClick
-}
-
-void TGdesk_main_frame::del_buttonOnButtonClick( wxCommandEvent& event )
-{
-
-Disable();
-wxDialog *form = new TGdesk_delete_client_form(this);
+wxDialog * form = new TGdesk_import_car_form(this);
 form->Show();
+Disable();
 }
-
-void TGdesk_main_frame::export_client_buttonOnButtonClick( wxCommandEvent& event )
-{
-// TODO: Implement export_client_buttonOnButtonClick
-}
-
-void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
-{
-// TODO: Implement export_buttonOnButtonClick
-}
-
 
 // void TGdesk_main_frame::add_client_buttonOnButtonClick( wxCommandEvent& event )
 // {
@@ -62,3 +45,25 @@ void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
 // {
 // // TODO: Implement import_client_buttonOnButtonClick
 // }
+
+void TGdesk_main_frame::export_buttonOnButtonClick( wxCommandEvent& event )
+{
+wxDialog * form = new TGdesk_eksport_car_form(this);
+form->Show();
+Disable();
+}
+
+void TGdesk_main_frame::del_buttonOnButtonClick( wxCommandEvent& event )
+{
+
+Disable();
+wxDialog *form = new TGdesk_delete_client_form(this);
+form->Show();
+}
+
+void TGdesk_main_frame::export_client_buttonOnButtonClick( wxCommandEvent& event )
+{
+wxDialog * form = new TGdesk_eksport_client_form(this);
+form->Show();
+Disable();
+}

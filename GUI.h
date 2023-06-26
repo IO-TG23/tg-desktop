@@ -314,3 +314,90 @@ class Register_QR : public wxDialog
 
 };
 
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class import_car_form
+///////////////////////////////////////////////////////////////////////////////
+class import_car_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxButton* import_car_button;
+		wxButton* send_car_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void import_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void import_car_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void import_car_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+		virtual void send_car_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		import_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Dodaj pojazd"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 300,300 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~import_car_form();
+
+};
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class eksport_car_form
+///////////////////////////////////////////////////////////////////////////////
+class eksport_car_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxStaticText* m_staticText10113;
+		wxTextCtrl* name;
+		wxButton* eksport_car_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void eksport_car_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void eksport_car_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void nameOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void eksport_car_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		eksport_car_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Eksport pojazdu"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400,300 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~eksport_car_form();
+
+};
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+/// Class eksport_client_form
+///////////////////////////////////////////////////////////////////////////////
+class eksport_client_form : public wxDialog
+{
+	private:
+
+	protected:
+		wxStaticText* m_staticText1;
+		wxStaticText* m_staticText10113;
+		wxTextCtrl* name;
+		wxButton* eksport_client_button;
+
+		// Virtual event handlers, override them in your derived class
+		virtual void eksport_client_formOnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void eksport_client_formOnIconize( wxIconizeEvent& event ) { event.Skip(); }
+		virtual void nameOnChar( wxKeyEvent& event ) { event.Skip(); }
+		virtual void eksport_client_buttonOnButtonClick( wxCommandEvent& event ) { event.Skip(); }
+
+
+	public:
+
+		eksport_client_form( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxT("Eksport klientów"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 400,300 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+
+		~eksport_client_form();
+
+};

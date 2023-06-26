@@ -1123,3 +1123,195 @@ Register_QR::~Register_QR()
 	dialogOK->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( Register_QR::dialogOnOKButtonClick ), NULL, this );
 
 }
+
+
+import_car_form::import_car_form( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxSize( 300,300 ), wxDefaultSize );
+	this->SetForegroundColour( wxColour( 30, 11, 6 ) );
+	this->SetBackgroundColour( wxColour( 128, 48, 28 ) );
+
+	wxBoxSizer* bSizer1;
+	bSizer1 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer1->Add( 0, 15, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+
+	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Zaimportuj nowy pojazd"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1->Wrap( -1 );
+	m_staticText1->SetFont( wxFont( 12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Arial") ) );
+	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1->Add( m_staticText1, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+
+	bSizer1->Add( 0, 1, 1, wxEXPAND, 1 );
+
+	import_car_button = new wxButton( this, wxID_ANY, wxT("Wybierz plik"), wxDefaultPosition, wxDefaultSize, 0 );
+	import_car_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	import_car_button->SetBackgroundColour( wxColour( 50, 19, 11 ) );
+
+	bSizer1->Add( import_car_button, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+	send_car_button = new wxButton( this, wxID_ANY, wxT("Wyślij pojazd"), wxDefaultPosition, wxDefaultSize, 0 );
+	send_car_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	send_car_button->SetBackgroundColour( wxColour( 50, 19, 11 ) );
+
+	bSizer1->Add( send_car_button, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+
+
+	this->SetSizer( bSizer1 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( import_car_form::import_car_formOnClose ) );
+	this->Connect( wxEVT_ICONIZE, wxIconizeEventHandler( import_car_form::import_car_formOnIconize ) );
+	import_car_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( import_car_form::import_car_buttonOnButtonClick ), NULL, this );
+	send_car_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( import_car_form::send_car_buttonOnButtonClick ), NULL, this );
+}
+
+import_car_form::~import_car_form()
+{
+	// Disconnect Events
+	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( import_car_form::import_car_formOnClose ) );
+	this->Disconnect( wxEVT_ICONIZE, wxIconizeEventHandler( import_car_form::import_car_formOnIconize ) );
+	import_car_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( import_car_form::import_car_buttonOnButtonClick ), NULL, this );
+	send_car_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( import_car_form::send_car_buttonOnButtonClick ), NULL, this );
+
+}
+
+
+
+eksport_car_form::eksport_car_form( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxSize( 400,300 ), wxDefaultSize );
+	this->SetForegroundColour( wxColour( 30, 11, 6 ) );
+	this->SetBackgroundColour( wxColour( 128, 48, 28 ) );
+
+	wxBoxSizer* bSizer1;
+	bSizer1 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer1->Add( 0, 15, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+
+	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Eksportuj pojazdy"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1->Wrap( -1 );
+	m_staticText1->SetFont( wxFont( 12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Arial") ) );
+	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1->Add( m_staticText1, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+	wxBoxSizer* bSizer184;
+	bSizer184 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText10113 = new wxStaticText( this, wxID_ANY, wxT("Nazwa pliku:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10113->Wrap( -1 );
+	m_staticText10113->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer184->Add( m_staticText10113, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	name = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 250,-1 ), 0 );
+	name->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	name->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+
+	bSizer184->Add( name, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+
+	bSizer1->Add( bSizer184, 1, wxEXPAND, 5 );
+
+	eksport_car_button = new wxButton( this, wxID_ANY, wxT("Eksportuj dane"), wxDefaultPosition, wxDefaultSize, 0 );
+	eksport_car_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	eksport_car_button->SetBackgroundColour( wxColour( 50, 19, 11 ) );
+
+	bSizer1->Add( eksport_car_button, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+
+	this->SetSizer( bSizer1 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( eksport_car_form::eksport_car_formOnClose ) );
+	this->Connect( wxEVT_ICONIZE, wxIconizeEventHandler( eksport_car_form::eksport_car_formOnIconize ) );
+	name->Connect( wxEVT_CHAR, wxKeyEventHandler( eksport_car_form::nameOnChar ), NULL, this );
+	eksport_car_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( eksport_car_form::eksport_car_buttonOnButtonClick ), NULL, this );
+}
+
+eksport_car_form::~eksport_car_form()
+{
+	// Disconnect Events
+	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( eksport_car_form::eksport_car_formOnClose ) );
+	this->Disconnect( wxEVT_ICONIZE, wxIconizeEventHandler( eksport_car_form::eksport_car_formOnIconize ) );
+	name->Disconnect( wxEVT_CHAR, wxKeyEventHandler( eksport_car_form::nameOnChar ), NULL, this );
+	eksport_car_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( eksport_car_form::eksport_car_buttonOnButtonClick ), NULL, this );
+
+}
+
+eksport_client_form::eksport_client_form( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxSize( 400,300 ), wxDefaultSize );
+	this->SetForegroundColour( wxColour( 30, 11, 6 ) );
+	this->SetBackgroundColour( wxColour( 128, 48, 28 ) );
+
+	wxBoxSizer* bSizer1;
+	bSizer1 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer1->Add( 0, 15, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+
+	m_staticText1 = new wxStaticText( this, wxID_ANY, wxT("Eksportuj dane klientów"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1->Wrap( -1 );
+	m_staticText1->SetFont( wxFont( 12, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxT("Arial") ) );
+	m_staticText1->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer1->Add( m_staticText1, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+	wxBoxSizer* bSizer184;
+	bSizer184 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText10113 = new wxStaticText( this, wxID_ANY, wxT("Nazwa pliku:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10113->Wrap( -1 );
+	m_staticText10113->SetForegroundColour( wxColour( 20, 6, 4 ) );
+
+	bSizer184->Add( m_staticText10113, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+	name = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 250,-1 ), 0 );
+	name->SetForegroundColour( wxColour( 77, 28, 16 ) );
+	name->SetBackgroundColour( wxColour( 144, 144, 144 ) );
+
+	bSizer184->Add( name, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+
+
+	bSizer1->Add( bSizer184, 1, wxEXPAND, 5 );
+
+	eksport_client_button = new wxButton( this, wxID_ANY, wxT("Eksportuj dane"), wxDefaultPosition, wxDefaultSize, 0 );
+	eksport_client_button->SetForegroundColour( wxColour( 229, 229, 229 ) );
+	eksport_client_button->SetBackgroundColour( wxColour( 50, 19, 11 ) );
+
+	bSizer1->Add( eksport_client_button, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+
+
+	this->SetSizer( bSizer1 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+
+	// Connect Events
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( eksport_client_form::eksport_client_formOnClose ) );
+	this->Connect( wxEVT_ICONIZE, wxIconizeEventHandler( eksport_client_form::eksport_client_formOnIconize ) );
+	name->Connect( wxEVT_CHAR, wxKeyEventHandler( eksport_client_form::nameOnChar ), NULL, this );
+	eksport_client_button->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( eksport_client_form::eksport_client_buttonOnButtonClick ), NULL, this );
+}
+
+eksport_client_form::~eksport_client_form()
+{
+	// Disconnect Events
+	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( eksport_client_form::eksport_client_formOnClose ) );
+	this->Disconnect( wxEVT_ICONIZE, wxIconizeEventHandler( eksport_client_form::eksport_client_formOnIconize ) );
+	name->Disconnect( wxEVT_CHAR, wxKeyEventHandler( eksport_client_form::nameOnChar ), NULL, this );
+	eksport_client_button->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( eksport_client_form::eksport_client_buttonOnButtonClick ), NULL, this );
+
+}

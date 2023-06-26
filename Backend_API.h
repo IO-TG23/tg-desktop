@@ -9,6 +9,7 @@
 // #include <iostream>
 #include <string>
 #include <cstring>
+#include <fstream>
 #include <wx/base64.h>
 
 
@@ -48,6 +49,7 @@ public:
                             std::string offer_descr,
                             std::string email,
                             std::string phone_num);
+    Json::Value get_all_cars_list();
 
 private:
     Json::Value str2json(std::string strJson);
